@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Career OS 28</title>
-<meta name="description" content="就活の今日を整える、暗号化ミラー">
+<meta name="description" content="就活の今日を確認する">
 <meta name="theme-color" content="#0b0f14">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light dark">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -15,111 +15,221 @@
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%230b0f14'/%3E%3Ctext x='90' y='118' font-size='76' font-family='sans-serif' font-weight='700' fill='%235eead4' text-anchor='middle'%3E28%3C/text%3E%3C/svg%3E">
 <link id="manifestLink" rel="manifest" href='data:application/manifest+json,{"name":"Career OS 28","short_name":"Career OS 28","display":"standalone","start_url":".","background_color":"%230b0f14","theme_color":"%230b0f14","lang":"ja"}'>
 <style>
-  :root{--bg:#0b0f14;--card:#12181f;--card2:#131a22;--line:#1f2935;--line2:#26323f;--text:#eef2f5;--muted:#8b98a5;--muted2:#7d8b99;--teal:#2dd4bf;--teal-light:#5eead4;--rose:#fb7185;--amber:#fbbf24;--blue:#60a5fa;--green:#34d399;--purple:#c084fc;--red:#fb7185}
+  :root{--bg:#0b0f14;--card:#12181f;--card2:#131a22;--line:#1f2935;--line2:#26323f;--text:#eef2f5;--muted:#a3b3c2;--muted2:#93a5b5;--teal:#2dd4bf;--teal-light:#5eead4;--rose:#fb7185;--amber:#fbbf24;--blue:#60a5fa;--green:#34d399;--purple:#c084fc;--red:#fb7185;--nav-h:66px;--rowline:#1b242f;--soft:#cbd5e1;--greet:#b6c4d1;--body2:#dbe4ec;--nav-bg:rgba(11,15,20,.94);--code-bg:#0a0f13;--code-text:#e2e8f0}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
-  body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+  body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px) + 28px)}
   h1,h2,h3,p,ul,ol,figure{margin:0;padding:0} ul{list-style:none}
   button,input,textarea{font:inherit;color:inherit} button{cursor:pointer}
   .wrap{max-width:560px;margin:0 auto;padding:0 18px}
   .topbar{display:flex;align-items:center;justify-content:space-between;padding:calc(14px + env(safe-area-inset-top)) 18px 6px;max-width:560px;margin:0 auto}
+  .top-actions{display:flex;align-items:center;gap:8px}
   .brand{display:flex;align-items:center;gap:10px}.brand-mark{width:34px;height:34px;border-radius:10px;background:#12211f;border:1px solid #1f3a36;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:var(--teal-light)}
   .brand-name{font-size:14px;font-weight:700;letter-spacing:.04em}.brand-sub{font-size:11px;color:var(--muted);margin-top:1px}
   .icon-btn{width:40px;height:40px;border-radius:999px;border:1px solid #232d38;background:var(--card2);display:flex;align-items:center;justify-content:center;position:relative}
-  .icon-btn svg{width:19px;height:19px;stroke:#cbd5e1}
+  .icon-btn svg{width:19px;height:19px;stroke:var(--soft)}
   .badge-dot{position:absolute;top:7px;right:8px;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:#f43f5e;color:#fff;font-size:10px;font-weight:800;display:none;align-items:center;justify-content:center;border:2px solid var(--bg)}
   .badge-dot.show{display:flex}
   .view{display:none}.view.active{display:block}
   .hero{padding:20px 0 6px}.hero-date{font-size:13px;color:var(--teal-light);font-weight:700;letter-spacing:.14em}
   .hero-day{font-size:42px;line-height:1.08;font-weight:800;letter-spacing:-.02em;margin-top:8px}
-  .hero-greet{font-size:14.5px;color:#aebac6;margin-top:10px;line-height:1.65}
+  .hero-greet{font-size:14.5px;color:var(--greet);margin-top:10px;line-height:1.65}
   .hero-clock{display:flex;align-items:baseline;gap:10px;margin-top:14px}
   .clock-time{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}.clock-sec{font-size:13px;color:var(--muted2);font-variant-numeric:tabular-nums}
   .sync-line{font-size:11.5px;color:var(--muted2);margin-top:10px}
   .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:18px}
-  .stat{background:var(--card2);border:1px solid #202a35;border-radius:16px;padding:14px 12px}
+  .stat{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:14px 12px;box-shadow:0 2px 10px rgba(0,0,0,.22)}
   .stat-num{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}.stat-num.red{color:var(--rose)}.stat-num.teal{color:var(--teal-light)}.stat-num.amber{color:var(--amber)}
   .stat-label{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4}
   .section{margin-top:26px}.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
   .section-title{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:800}
   .section-title .dot{width:8px;height:8px;border-radius:999px;flex-shrink:0}
   .dot-teal{background:var(--teal)}.dot-rose{background:var(--rose)}.dot-amber{background:var(--amber)}.dot-slate{background:#94a3b8}.dot-blue{background:var(--blue)}.dot-purple{background:var(--purple)}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
-  .row-item{display:flex;gap:12px;padding:15px 16px;border-bottom:1px solid #1b242f;align-items:flex-start}.row-item:last-child{border-bottom:none}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.28)}
+  .row-item{display:flex;gap:12px;padding:15px 16px;border-bottom:1px solid var(--rowline);align-items:flex-start}.row-item:last-child{border-bottom:none}
   .time-chip{flex-shrink:0;min-width:52px;text-align:center;background:#0e2a27;color:var(--teal-light);border:1px solid #17423d;font-weight:800;font-size:13px;padding:7px 6px;border-radius:10px;font-variant-numeric:tabular-nums}
-  .date-chip{flex-shrink:0;min-width:52px;text-align:center;background:#16202b;color:#cbd5e1;border:1px solid var(--line2);font-weight:700;font-size:11.5px;padding:7px 6px;border-radius:10px;line-height:1.4}
+  .date-chip{flex-shrink:0;min-width:52px;text-align:center;background:#16202b;color:var(--soft);border:1px solid var(--line2);font-weight:700;font-size:11.5px;padding:7px 6px;border-radius:10px;line-height:1.4}
   .row-main{flex:1;min-width:0}.row-title{font-size:14.5px;font-weight:700;line-height:1.45;word-break:break-word}
   .row-meta{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.55;word-break:break-word;white-space:pre-wrap}
   .remain{flex-shrink:0;font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;white-space:nowrap}
-  .remain-red{background:#3b1220;color:#fda4af;border:1px solid #5b1a2e}.remain-amber{background:#33270d;color:#fcd34d;border:1px solid #57450f}.remain-teal{background:#0e2a27;color:var(--teal-light);border:1px solid #17423d}.remain-slate{background:#1c2632;color:#aebac6;border:1px solid #2a3746}
-  .type-chip{flex-shrink:0;font-size:10.5px;font-weight:800;padding:4px 8px;border-radius:999px;background:#1c2632;color:#aebac6;border:1px solid #2a3746}
-  .empty{padding:24px 16px;text-align:center}.empty-title{font-size:13.5px;font-weight:700;color:#cbd5e1}.empty-text{font-size:12px;color:var(--muted2);margin-top:5px;line-height:1.65}
-  .todo-item{display:flex;gap:11px;padding:13px 16px;border-bottom:1px solid #1b242f;align-items:flex-start}.todo-item:last-child{border-bottom:none}
+  .remain-red{background:#3b1220;color:#fda4af;border:1px solid #5b1a2e}.remain-amber{background:#33270d;color:#fcd34d;border:1px solid #57450f}.remain-teal{background:#0e2a27;color:var(--teal-light);border:1px solid #17423d}.remain-slate{background:#1c2632;color:var(--greet);border:1px solid var(--line2)}
+  .type-chip{flex-shrink:0;font-size:10.5px;font-weight:800;padding:4px 8px;border-radius:999px;background:#1c2632;color:var(--greet);border:1px solid var(--line2)}
+  .empty{padding:24px 16px;text-align:center}.empty-title{font-size:13.5px;font-weight:700;color:var(--soft)}.empty-text{font-size:12px;color:var(--muted2);margin-top:5px;line-height:1.65}
+  .todo-item{display:flex;gap:11px;padding:13px 16px;border-bottom:1px solid var(--rowline);align-items:flex-start}.todo-item:last-child{border-bottom:none}
   .todo-check{flex-shrink:0;width:23px;height:23px;border-radius:8px;border:1.6px solid #334155;background:#0f151c;display:flex;align-items:center;justify-content:center;margin-top:1px;padding:0}
   .todo-check svg{width:13px;height:13px;stroke:#0b0f14;stroke-width:3.2;opacity:0}
   .todo-check.done{background:var(--teal);border-color:var(--teal)}.todo-check.done svg{opacity:1}
-  .todo-text{flex:1;font-size:14.5px;line-height:1.5;word-break:break-word;padding-top:2px}.todo-text.done{color:#64748b;text-decoration:line-through}
+  .todo-text{flex:1;font-size:14.5px;line-height:1.5;word-break:break-word;padding-top:2px}.todo-text.done{color:var(--muted);text-decoration:line-through}
   /* Registration / status */
   .reg-card{background:linear-gradient(180deg,#12211f,#10161d);border:1px solid #1f3a36;border-radius:20px;padding:20px 18px;margin-top:22px}
   .reg-card h2{font-size:18px;font-weight:800;line-height:1.4}
-  .reg-card p{font-size:13px;color:#aebac6;line-height:1.7;margin-top:9px}
+  .reg-card p{font-size:13px;color:var(--greet);line-height:1.7;margin-top:9px}
   .btn-primary{border:none;background:var(--teal);color:#062a26;border-radius:12px;padding:14px;font-weight:800;font-size:14.5px;width:100%}
-  .btn-ghost{border:1px solid #2a3746;background:none;border-radius:12px;padding:13px;font-weight:700;font-size:14px;color:#cbd5e1;width:100%}
+  .btn-ghost{border:1px solid var(--line2);background:none;border-radius:12px;padding:13px;font-weight:700;font-size:14px;color:var(--soft);width:100%}
   .btn-danger{width:100%;border:1px solid #5b1a2e;background:#2a0f18;color:#fda4af;border-radius:12px;padding:12px;font-weight:700;font-size:13.5px}
-  .code-box{margin-top:14px;background:#0a0f13;border:1px solid var(--line2);border-radius:14px;padding:14px}
+  .code-box{margin-top:14px;background:var(--code-bg);border:1px solid var(--line2);border-radius:14px;padding:14px}
   .code-label{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--teal-light)}
-  .code-text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.65;word-break:break-all;margin-top:8px;color:#e2e8f0}
+  .code-text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.65;word-break:break-all;margin-top:8px;color:var(--code-text)}
   .status-pill{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;padding:5px 10px;border-radius:999px}
   .status-ok{background:#0e2a27;color:var(--teal-light);border:1px solid #17423d}
-  .status-wait{background:#1c2632;color:#aebac6;border:1px solid #2a3746}
+  .status-wait{background:#1c2632;color:var(--greet);border:1px solid var(--line2)}
   /* Companies */
-  .company-item{display:flex;gap:12px;padding:16px;border-bottom:1px solid #1b242f;align-items:flex-start;width:100%;background:none;border-left:none;border-right:none;border-top:none;text-align:left}
+  .company-item{display:flex;gap:12px;padding:16px;border-bottom:1px solid var(--rowline);align-items:flex-start;width:100%;background:none;border-left:none;border-right:none;border-top:none;text-align:left}
   .company-item:last-child{border-bottom:none}
   .company-avatar{flex-shrink:0;width:42px;height:42px;border-radius:12px;background:#0e2a27;border:1px solid #17423d;color:var(--teal-light);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px}
-  .status-chip{flex-shrink:0;font-size:10.5px;font-weight:800;padding:4px 8px;border-radius:999px;background:#16202b;color:#aebac6;border:1px solid var(--line2);white-space:nowrap}
+  .status-chip{flex-shrink:0;font-size:10.5px;font-weight:800;padding:4px 8px;border-radius:999px;background:#16202b;color:var(--greet);border:1px solid var(--line2);white-space:nowrap}
   .back-btn{background:none;border:none;color:var(--teal-light);font-size:13.5px;font-weight:700;padding:6px 0;display:flex;align-items:center;gap:4px}
   .report-summary{background:#0e2a27;border:1px solid #17423d;border-radius:16px;padding:16px;font-size:14px;line-height:1.8;white-space:pre-wrap;word-break:break-word}
   .toc{padding:8px 0}
-  .toc a{display:flex;gap:10px;padding:11px 16px;color:#cbd5e1;text-decoration:none;font-size:13.5px;font-weight:600;border-bottom:1px solid #1b242f}
+  .toc a{display:flex;gap:10px;padding:11px 16px;color:var(--soft);text-decoration:none;font-size:13.5px;font-weight:600;border-bottom:1px solid var(--rowline)}
   .toc a:last-child{border-bottom:none}
   .toc-num{color:var(--teal-light);font-weight:800;flex-shrink:0}
-  .chapter{padding:18px 16px;border-bottom:1px solid #1b242f}.chapter:last-child{border-bottom:none}
+  .chapter{padding:18px 16px;border-bottom:1px solid var(--rowline)}.chapter:last-child{border-bottom:none}
   .chapter h3{font-size:15.5px;font-weight:800;line-height:1.5;margin-bottom:10px}
-  .chapter-body{font-size:14px;line-height:1.85;color:#dbe4ec;white-space:pre-wrap;word-break:break-word}
+  .chapter-body{font-size:14px;line-height:1.85;color:var(--body2);white-space:pre-wrap;word-break:break-word}
   /* Notifications */
-  .notif-item{display:flex;gap:12px;padding:15px 16px;border-bottom:1px solid #1b242f;align-items:flex-start}.notif-item:last-child{border-bottom:none}
+  .notif-item{display:flex;gap:12px;padding:15px 16px;border-bottom:1px solid var(--rowline);align-items:flex-start}.notif-item:last-child{border-bottom:none}
   .notif-bar{flex-shrink:0;width:4px;align-self:stretch;border-radius:999px}
   .nb-blue{background:var(--blue)}.nb-green{background:var(--green)}.nb-purple{background:var(--purple)}.nb-red{background:#f43f5e}.nb-slate{background:#64748b}
   .notif-cat{font-size:10.5px;font-weight:800;letter-spacing:.06em}
   .nc-blue{color:var(--blue)}.nc-green{color:var(--green)}.nc-purple{color:var(--purple)}.nc-red{color:var(--rose)}.nc-slate{color:var(--muted)}
   .filter-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
-  .filter-btn{border:1px solid var(--line2);background:var(--card2);color:#aebac6;font-size:12px;font-weight:700;padding:8px 13px;border-radius:999px}
+  .filter-btn{border:1px solid var(--line2);background:var(--card2);color:var(--greet);font-size:12px;font-weight:700;padding:8px 13px;border-radius:999px}
   .filter-btn.sel{border-color:var(--teal);color:var(--teal-light);background:#0e2a27}
   /* Settings */
   .setting-block{margin-top:22px}
   .setting-block h3{font-size:14.5px;font-weight:800;margin-bottom:8px}
   .setting-block p{font-size:12px;color:var(--muted);line-height:1.65}
-  /* Guide */
-  .guide{background:#10161d;border:1px dashed #2a3746;border-radius:18px;padding:16px;margin-top:26px}
-  .guide h3{font-size:13.5px;font-weight:800}
-  .guide ol{list-style:none;margin-top:10px;display:grid;gap:8px}
-  .guide li{display:flex;gap:10px;font-size:12.5px;color:#aebac6;line-height:1.55}
-  .guide .step-num{flex-shrink:0;width:20px;height:20px;border-radius:999px;background:#1c2632;color:var(--teal-light);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
-  .guide p{font-size:11.5px;color:#64748b;margin-top:11px;line-height:1.6}
-  .foot-note{text-align:center;font-size:11px;color:#52606e;margin:26px 0 6px;line-height:1.7}
   .page-head{padding:20px 0 4px}.page-head h1{font-size:24px;font-weight:800}.page-head p{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.6}
+  /* Hamburger menu sheet */
+  .menu-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .22s ease;z-index:90}
+  .menu-backdrop.open{opacity:1;pointer-events:auto}
+  .menu-sheet{position:fixed;top:0;right:0;bottom:0;width:min(88vw,380px);background:var(--card);border-left:1px solid var(--line2);z-index:95;transform:translateX(105%);transition:transform .24s ease;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(14px + env(safe-area-inset-top,0px)) 20px calc(28px + env(safe-area-inset-bottom,0px));box-shadow:-12px 0 32px rgba(0,0,0,.35)}
+  .menu-sheet.open{transform:translateX(0)}
+  .menu-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  .menu-head h2{font-size:19px;font-weight:800}
+  .menu-close{width:38px;height:38px;border-radius:999px;border:1px solid var(--line2);background:var(--card2);color:var(--soft);font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0}
+  .menu-sheet .setting-block:first-of-type{margin-top:16px}
   /* Bottom nav */
-  .bottom-nav{position:fixed;left:0;right:0;bottom:0;background:rgba(11,15,20,.94);backdrop-filter:blur(14px);border-top:1px solid #1c2632;padding-bottom:env(safe-area-inset-bottom);z-index:40}
-  .bottom-nav-inner{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);padding:8px 6px 10px}
-  .nav-btn{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:3px;color:#7d8b99;font-size:10px;font-weight:700;padding:4px 2px;position:relative}
+  .bottom-nav{position:fixed;left:0;right:0;top:auto;bottom:0;background:var(--nav-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid #1c2632;padding-bottom:env(safe-area-inset-bottom,0px);z-index:60;transform:translateZ(0);-webkit-transform:translateZ(0)}
+  .bottom-nav-inner{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);padding:8px 6px 10px}
+  .nav-btn{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted2);font-size:10px;font-weight:700;padding:4px 2px;position:relative}
   .nav-btn svg{width:20px;height:20px;stroke:currentColor}
   .nav-btn.active{color:var(--teal-light)}
   .nav-badge{position:absolute;top:0;right:calc(50% - 20px);min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#f43f5e;color:#fff;font-size:9.5px;font-weight:800;display:none;align-items:center;justify-content:center}
   .nav-badge.show{display:flex}
-  .toast{position:fixed;left:50%;transform:translateX(-50%) translateY(16px);bottom:calc(104px + env(safe-area-inset-bottom));background:#e6fffa;color:#063f38;font-size:13px;font-weight:800;padding:11px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:all .25s ease;z-index:80;box-shadow:0 10px 30px rgba(0,0,0,.4);white-space:nowrap;max-width:92vw}
+  .toast{position:fixed;left:50%;transform:translateX(-50%) translateY(16px);bottom:calc(104px + env(safe-area-inset-bottom));background:#e6fffa;color:#063f38;font-size:13px;font-weight:800;padding:11px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:all .25s ease;z-index:120;box-shadow:0 10px 30px rgba(0,0,0,.4);white-space:nowrap;max-width:92vw}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  /* Priority card */
+  .priority-card{background:linear-gradient(160deg,#16302c,#10161d 72%);border:1px solid #1f3a36;border-radius:20px;padding:20px 18px;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+  .priority-kind{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--teal-light)}
+  .priority-title{font-size:20px;font-weight:800;line-height:1.45;margin-top:8px;word-break:break-word}
+  .priority-company{font-size:14px;color:var(--soft);font-weight:700;margin-top:5px;word-break:break-word}
+  .priority-meta{display:flex;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+  .priority-when{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+  /* Calendar */
+  .cal-nav{display:flex;align-items:center;gap:8px}
+  .cal-label{font-size:14px;font-weight:800;font-variant-numeric:tabular-nums;min-width:92px;text-align:center}
+  .cal-nav-btn{width:32px;height:32px;border-radius:999px;border:1px solid var(--line2);background:var(--card2);color:var(--soft);font-size:19px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0}
+  .cal-dow{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:2px}
+  .cal-dow span{text-align:center;font-size:10.5px;font-weight:700;color:var(--muted2);padding:4px 0}
+  .cal-dow span:first-child{color:#fda4af}.cal-dow span:last-child{color:#93c5fd}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+  .cal-cell{background:none;border:1px solid transparent;border-radius:10px;min-height:47px;display:flex;flex-direction:column;align-items:center;padding:5px 0 4px;gap:3px;color:var(--text)}
+  .cal-blank{border:none;pointer-events:none;min-height:0}
+  .cal-daynum{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+  .cal-today .cal-daynum{color:var(--teal-light);font-weight:800}
+  .cal-sel{background:#0e2a27;border-color:#17423d}
+  .cal-dots{display:flex;gap:3px;height:6px;align-items:center}
+  .cal-dot{width:6px;height:6px;border-radius:999px;flex-shrink:0}
+  .cdot-rose{background:#fb7185}.cdot-blue{background:#60a5fa}.cdot-teal{background:#2dd4bf}.cdot-amber{background:#fbbf24}.cdot-purple{background:#c084fc}.cdot-green{background:#34d399}.cdot-slate{background:#94a3b8}
+  .cal-legend{display:flex;flex-wrap:wrap;gap:7px 12px;padding:11px 6px 2px}
+  .cal-legend span{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:var(--muted)}
+  .cal-legend i{width:7px;height:7px;border-radius:999px;display:inline-block;flex-shrink:0}
+  /* Axis / goal card */
+  .axis-card{background:linear-gradient(160deg,#14251f,#10161d 78%);border:1px solid #1f3a36;border-radius:20px;padding:20px 18px;box-shadow:0 6px 24px rgba(0,0,0,.3)}
+  .axis-block + .axis-block{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+  .axis-label{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--teal-light)}
+  .axis-label.goal{color:var(--amber)}
+  .axis-text{font-size:15.5px;font-weight:600;line-height:1.75;margin-top:7px;white-space:pre-wrap;word-break:break-word}
+  .readonly-note{font-size:11px;color:var(--muted2);margin-top:14px}
+  /* Menu navigation cards (画面一覧) */
+  .menu-group-label{font-size:12px;font-weight:800;color:var(--muted);margin:20px 0 10px;letter-spacing:.04em}
+  .menu-card{display:block;width:100%;text-align:left;background:var(--card2);border:1px solid var(--line2);border-radius:16px;padding:16px;margin-bottom:10px}
+  .menu-card-title{font-size:16.5px;font-weight:800;line-height:1.35}
+  .menu-card-desc{font-size:12.5px;color:var(--greet);line-height:1.55;margin-top:5px}
+  .mc-purple{color:var(--purple)}.mc-green{color:var(--green)}.mc-rose{color:var(--rose)}.mc-teal{color:var(--teal-light)}.mc-pink{color:#f9a8d4}.mc-sky{color:var(--blue)}.mc-blue{color:#93c5fd}.mc-slate{color:var(--soft)}
+  /* Info rows / mypage */
+  .info-row{display:flex;gap:12px;padding:13px 16px;border-bottom:1px solid var(--rowline);align-items:flex-start}.info-row:last-child{border-bottom:none}
+  .info-label{flex-shrink:0;width:86px;font-size:11.5px;font-weight:800;color:var(--muted);padding-top:2px;line-height:1.5}
+  .info-value{flex:1;font-size:14px;line-height:1.6;word-break:break-word;white-space:pre-wrap}
+  .btn-open{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:#062a26;border:none;border-radius:10px;padding:10px 16px;font-weight:800;font-size:13.5px;text-decoration:none}
+  .fav-star{color:var(--amber);font-size:15px}
+  /* Prep progress */
+  .prep-progress{height:8px;border-radius:999px;background:#1c2632;overflow:hidden;margin-top:10px}
+  .prep-progress i{display:block;height:100%;background:var(--teal);border-radius:999px}
+  .entry-body{font-size:14px;line-height:1.85;color:var(--body2);white-space:pre-wrap;word-break:break-word}
+  .link-row{display:flex;gap:12px;padding:16px;border-bottom:1px solid var(--rowline);align-items:center}.link-row:last-child{border-bottom:none}
+  .link-ic{flex-shrink:0;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  /* Light theme */
+  html[data-theme="light"]{--bg:#f3f5f7;--card:#ffffff;--card2:#edf1f4;--line:#dde4ea;--line2:#bfcbd8;--rowline:#e4ebf1;--text:#15222e;--muted:#4d6070;--muted2:#576b7d;--teal-light:#0d9488;--soft:#33475c;--greet:#43586b;--body2:#26394c;--nav-bg:rgba(255,255,255,.95);--code-bg:#eef3f6;--code-text:#1c2f42}
+  html[data-theme="light"] .topbar .icon-btn{border-color:var(--line2)}
+  html[data-theme="light"] .bottom-nav{border-top-color:var(--line)}
+  html[data-theme="light"] .nav-btn{color:var(--muted2)}
+  html[data-theme="light"] .time-chip{background:#e0f5f0;color:#0f766e;border-color:#8fd8ca}
+  html[data-theme="light"] .date-chip{background:#eef2f5}
+  html[data-theme="light"] .remain-red{background:#ffe4e6;color:#be123c;border-color:#fda4af}
+  html[data-theme="light"] .remain-amber{background:#fef3c7;color:#92400e;border-color:#fcd34d}
+  html[data-theme="light"] .remain-teal{background:#ccfbf1;color:#0f766e;border-color:#5eead4}
+  html[data-theme="light"] .remain-slate{background:#e2e8f0;color:#475569;border-color:#cbd5e1}
+  html[data-theme="light"] .status-ok{background:#ccfbf1;color:#0f766e;border-color:#5eead4}
+  html[data-theme="light"] .status-wait{background:#e2e8f0;color:#475569;border-color:#cbd5e1}
+  html[data-theme="light"] .type-chip{background:#eef2f5;color:#526272}
+  html[data-theme="light"] .status-chip{background:#eef2f5;color:#526272}
+  html[data-theme="light"] .reg-card{background:linear-gradient(180deg,#e0f5f0,#ffffff);border-color:#8fd8ca}
+  html[data-theme="light"] .priority-card{background:linear-gradient(160deg,#d7f3ec,#ffffff 74%);border-color:#8fd8ca}
+  html[data-theme="light"] .report-summary{background:#e0f5f0;border-color:#8fd8ca}
+  html[data-theme="light"] .company-avatar{background:#e0f5f0;border-color:#8fd8ca;color:#0f766e}
+  html[data-theme="light"] .cal-sel{background:#ccfbf1;border-color:#5eead4}
+  html[data-theme="light"] .filter-btn.sel{background:#ccfbf1;color:#0f766e;border-color:#14b8a6}
+  html[data-theme="light"] .todo-check{background:#ffffff;border-color:#94a3b8}
+  html[data-theme="light"] .btn-danger{background:#fff1f2;color:#be123c;border-color:#fda4af}
+  html[data-theme="light"] .stat-num.red{color:#e11d48}
+  html[data-theme="light"] .stat-num.amber{color:#d97706}
+  html[data-theme="light"] .stat-num.teal{color:#0d9488}
+  html[data-theme="light"] .nc-blue{color:#2563eb}
+  html[data-theme="light"] .nc-green{color:#059669}
+  html[data-theme="light"] .nc-purple{color:#9333ea}
+  html[data-theme="light"] .nc-red{color:#e11d48}
+  html[data-theme="light"] [style*="#5eead4"]{color:#0d9488 !important}
+  html[data-theme="light"] [style*="#8b98a5"]{color:var(--muted) !important}
+  html[data-theme="light"] [style*="#7d8b99"]{color:var(--muted2) !important}
+  html[data-theme="light"] .cal-dow span:first-child{color:#e11d48}
+  html[data-theme="light"] .cal-dow span:last-child{color:#2563eb}
+  html[data-theme="light"] .axis-card{background:linear-gradient(160deg,#d7f3ec,#ffffff 80%);border-color:#8fd8ca}
+  html[data-theme="light"] .axis-label{color:#0f766e}
+  html[data-theme="light"] .axis-label.goal{color:#b45309}
+  html[data-theme="light"] .prep-progress{background:#e2e8f0}
+  html[data-theme="light"] .btn-open{color:#ffffff}
+  html[data-theme="light"] .mc-purple{color:#9333ea}
+  html[data-theme="light"] .mc-green{color:#059669}
+  html[data-theme="light"] .mc-rose{color:#e11d48}
+  html[data-theme="light"] .mc-teal{color:#0d9488}
+  html[data-theme="light"] .mc-pink{color:#db2777}
+  html[data-theme="light"] .mc-sky{color:#2563eb}
+  html[data-theme="light"] .mc-blue{color:#1d4ed8}
+  html[data-theme="light"] .mc-slate{color:#33475c}
   @media (min-width:480px){.hero-day{font-size:48px}}
   @media (prefers-reduced-motion:reduce){.toast{transition:none}}
 </style>
+<script>
+/* Apply saved theme (auto / light / dark) before first paint. */
+(function(){ try{
+  var t=localStorage.getItem("career-os-28-theme")||"auto";
+  var dark = t==="dark" || (t!=="light" && !(window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches));
+  document.documentElement.setAttribute("data-theme", dark?"dark":"light");
+  document.documentElement.style.colorScheme = dark?"dark":"light";
+}catch(e){ document.documentElement.setAttribute("data-theme","dark"); } })();
+</script>
 </head>
 <body>
 
@@ -128,14 +238,43 @@
     <div class="brand-mark">28</div>
     <div>
       <div class="brand-name">Career OS 28</div>
-      <div class="brand-sub">暗号化ミラー ・ 閲覧用</div>
     </div>
   </div>
-  <button class="icon-btn" id="bellBtn" aria-label="通知">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-    <span class="badge-dot" id="bellBadge">0</span>
-  </button>
+  <div class="top-actions">
+    <button class="icon-btn" id="bellBtn" aria-label="通知センターを開く">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+      <span class="badge-dot" id="bellBadge">0</span>
+    </button>
+    <button class="icon-btn" id="menuBtn" aria-label="メニューを開く" aria-haspopup="true" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
 </header>
+
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<aside class="menu-sheet" id="menuSheet" aria-hidden="true" aria-label="画面一覧">
+  <div class="menu-head">
+    <h2>画面一覧</h2>
+    <button class="menu-close" id="menuCloseBtn" aria-label="メニューを閉じる">×</button>
+  </div>
+
+  <div class="menu-group-label">その他の画面</div>
+  <button class="menu-card" data-goto="notifications"><div class="menu-card-title mc-purple">通知センター</div><div class="menu-card-desc">メール・予定・改善・重要締切を色分け表示（未読バッジ連動）</div></button>
+  <button class="menu-card" data-goto="schedule"><div class="menu-card-title mc-green">就活カレンダー</div><div class="menu-card-desc">締切・予定を種別カラーで月表示</div></button>
+  <button class="menu-card" data-goto="reflections"><div class="menu-card-title mc-rose">振り返り・アーカイブ</div><div class="menu-card-desc">終わった予定の振り返りと記録</div></button>
+  <button class="menu-card" data-goto="industries"><div class="menu-card-title mc-teal">業界ライブラリ</div><div class="menu-card-desc">業界の構造・動向・職種を比較</div></button>
+  <button class="menu-card" data-goto="self"><div class="menu-card-title mc-pink">自己分析</div><div class="menu-card-desc">自己評価／行動事実／仮説を分離</div></button>
+  <button class="menu-card" data-goto="prep"><div class="menu-card-title mc-sky">ES・面接対策</div><div class="menu-card-desc">共通エピソードと紐づけて管理</div></button>
+  <button class="menu-card" data-goto="mypage"><div class="menu-card-title mc-blue">マイページ</div><div class="menu-card-desc">ログインURL・ID・登録状態を企業ごとに管理</div></button>
+  <button class="menu-card" data-goto="improvements"><div class="menu-card-title mc-sky">改善リクエスト</div><div class="menu-card-desc">気づいた改善点とその状態</div></button>
+  <button class="menu-card" data-goto="linkage"><div class="menu-card-title mc-green">連携状況</div><div class="menu-card-desc">Gmail連携中／カレンダー連携中／Notion未接続</div></button>
+  <button class="menu-card" data-goto="settings"><div class="menu-card-title mc-slate">設定・オプション</div><div class="menu-card-desc">テーマ設定、登録コード、端末キーの管理</div></button>
+
+  <div class="menu-group-label">メイン画面</div>
+  <button class="menu-card" data-goto="home"><div class="menu-card-title mc-blue">ホーム</div></button>
+  <button class="menu-card" data-goto="companies"><div class="menu-card-title mc-slate">企業</div></button>
+  <button class="menu-card" data-goto="schedule"><div class="menu-card-title mc-slate">予定</div></button>
+</aside>
 
 <main class="wrap">
 
@@ -144,20 +283,32 @@
     <section class="hero">
       <div class="hero-date" id="heroDate">—</div>
       <h1 class="hero-day" id="heroDay">今日</h1>
-      <p class="hero-greet" id="heroGreet">今日の予定と締切を、ここで確認できます。</p>
+      <p class="hero-greet" id="heroGreet"></p>
       <div class="hero-clock"><span class="clock-time" id="clockTime">--:--</span><span class="clock-sec" id="clockSec">--</span></div>
       <div class="sync-line" id="syncLine">状態を確認しています…</div>
       <div class="stats">
         <div class="stat"><div class="stat-num teal" id="statSchedule">0</div><div class="stat-label">今日の予定</div></div>
-        <div class="stat"><div class="stat-num red" id="statDeadline">0</div><div class="stat-label">締切（48h以内・期限切れ）</div></div>
-        <div class="stat"><div class="stat-num amber" id="statTodo">0</div><div class="stat-label">未完了のTodo</div></div>
+        <div class="stat"><div class="stat-num red" id="statDeadline">0</div><div class="stat-label">締切（48時間以内・期限切れ）</div></div>
+        <div class="stat"><div class="stat-num amber" id="statNotif">0</div><div class="stat-label">未読の通知</div></div>
       </div>
+    </section>
+
+    <!-- Career axis / goal (only when present in data) -->
+    <section class="section" id="axisSection" style="display:none;margin-top:22px">
+      <div class="section-head"><h2 class="section-title"><span class="dot dot-teal"></span>就活の軸・目標</h2></div>
+      <div class="axis-card" id="axisCard"></div>
+    </section>
+
+    <!-- Today's top priority (only shown when decrypted data has a candidate) -->
+    <section class="section" id="prioritySection" style="display:none;margin-top:22px">
+      <div class="section-head"><h2 class="section-title"><span class="dot dot-rose"></span>今日の最優先</h2></div>
+      <div class="priority-card" id="priorityCard"></div>
     </section>
 
     <!-- Registration prompt (shown when no device key) -->
     <section class="reg-card" id="regCard" style="display:none">
-      <h2>この端末を登録すると、あなたのデータが表示されます</h2>
-      <p>このページには、あなたのデータを暗号化したものだけが置かれます。端末で鍵を作り、表示される登録コードを Muse に送ると、この端末だけで中身を開けるようになります。パスワード入力は不要で、次回からは開くだけでそのまま表示されます。</p>
+      <h2>端末を登録する</h2>
+      <p>登録すると、この端末にデータが表示されます。</p>
       <div style="margin-top:16px"><button class="btn-primary" id="registerBtn">端末を登録する</button></div>
       <div id="regCodeArea" style="display:none">
         <div class="code-box">
@@ -165,48 +316,42 @@
           <div class="code-text" id="regCodeText"></div>
         </div>
         <div style="margin-top:10px"><button class="btn-ghost" id="copyCodeBtn">登録コードをコピー</button></div>
-        <p style="margin-top:12px;color:#5eead4;font-weight:700">このコードを Muse に送ってください。コードを受け取った Muse が、あなたのデータをこの端末向けに暗号化して配置します。</p>
+        <p style="margin-top:12px;color:#5eead4;font-weight:700">このコードを Muse に送ってください。</p>
       </div>
     </section>
 
     <!-- Unsynced notice (key exists but no decryptable data) -->
     <section class="reg-card" id="unsyncCard" style="display:none">
       <h2>データ未同期</h2>
-      <p id="unsyncText">暗号化データがまだ配置されていないか、この端末の鍵では開けませんでした。登録コードを Muse に送ると、データが配置されます。すでに送った場合は、配置が完了するまで少し待ってから開き直してください。</p>
+      <p id="unsyncText">データがまだ届いていません。</p>
       <div style="margin-top:14px"><button class="btn-ghost" id="retryBtn">もう一度読み込む</button></div>
     </section>
 
-    <section class="section">
-      <div class="section-head"><h2 class="section-title"><span class="dot dot-teal"></span>今日の予定</h2></div>
-      <div class="card"><div id="todayEvents"></div></div>
-    </section>
-
-    <section class="section">
+    <section class="section" id="homeDeadlinesSection">
       <div class="section-head"><h2 class="section-title"><span class="dot dot-rose"></span>締切</h2></div>
       <div class="card"><div id="homeDeadlines"></div></div>
     </section>
 
-    <section class="section">
-      <div class="section-head"><h2 class="section-title"><span class="dot dot-amber"></span>Todo</h2><span style="font-size:12px;color:#7d8b99" id="todoCountLabel"></span></div>
+    <section class="section" id="taskDueSection" style="display:none">
+      <div class="section-head"><h2 class="section-title"><span class="dot dot-amber"></span>タスク期限</h2></div>
       <div class="card"><div id="homeTasks"></div></div>
     </section>
 
-    <section class="guide">
-      <h3>ホーム画面に追加する方法（iPhone）</h3>
-      <ol>
-        <li><span class="step-num">1</span><span>このページを <strong style="color:#e2e8f0">Safari</strong> で開く</span></li>
-        <li><span class="step-num">2</span><span>画面下の <strong style="color:#e2e8f0">共有ボタン</strong>（□に↑のマーク）をタップ</span></li>
-        <li><span class="step-num">3</span><span>「<strong style="color:#e2e8f0">ホーム画面に追加</strong>」を選ぶ</span></li>
-        <li><span class="step-num">4</span><span>名前が「Career OS 28」になっているのを確認して「追加」</span></li>
-      </ol>
-      <p>追加後はアイコンから全画面で開けます。端末の鍵はこの端末のブラウザに保存されるため、追加したアイコンから開いても登録はそのまま使えます。ブラウザのサイトデータを消すと鍵も消え、再登録が必要になります。</p>
+    <section class="section" id="todayEventsSection">
+      <div class="section-head"><h2 class="section-title"><span class="dot dot-teal"></span>今日の予定</h2></div>
+      <div class="card"><div id="todayEvents"></div></div>
     </section>
-    <p class="foot-note">Career OS 28（暗号化ミラー）<br>表示される内容は、本体から書き出されたデータの閲覧用コピーです。</p>
+
+    <section class="section" id="homeNotifSection" style="display:none">
+      <div class="section-head"><h2 class="section-title"><span class="dot dot-purple"></span>新着通知</h2><button class="back-btn" id="notifMoreBtn" style="padding:0">すべて見る ›</button></div>
+      <div class="card"><div id="homeNotifs"></div></div>
+    </section>
+
   </div>
 
   <!-- ===== COMPANIES ===== -->
   <div class="view" id="view-companies">
-    <div class="page-head"><h1>企業</h1><p>タップすると、企業研究レポート（要約→目次→全章）を1枚で表示します。</p></div>
+    <div class="page-head"><h1>企業</h1></div>
     <section class="section" style="margin-top:18px"><div class="card"><div id="companyList"></div></div></section>
   </div>
 
@@ -218,8 +363,35 @@
 
   <!-- ===== SCHEDULE ===== -->
   <div class="view" id="view-schedule">
-    <div class="page-head"><h1>予定・締切</h1><p>本体から書き出された予定と締切の一覧です。</p></div>
+    <div class="page-head"><h1>予定・締切</h1></div>
     <section class="section" style="margin-top:18px">
+      <div class="section-head">
+        <h2 class="section-title"><span class="dot dot-blue"></span>カレンダー</h2>
+        <div class="cal-nav">
+          <button class="cal-nav-btn" id="calPrev" aria-label="前月">‹</button>
+          <span class="cal-label" id="calLabel">—</span>
+          <button class="cal-nav-btn" id="calNext" aria-label="次月">›</button>
+        </div>
+      </div>
+      <div class="card" style="padding:12px 10px 14px">
+        <div class="cal-dow"><span>日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span></div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="cal-legend">
+          <span><i class="cdot-rose"></i>締切</span>
+          <span><i class="cdot-blue"></i>面接</span>
+          <span><i class="cdot-teal"></i>説明会</span>
+          <span><i class="cdot-amber"></i>ES</span>
+          <span><i class="cdot-purple"></i>Webテスト</span>
+          <span><i class="cdot-green"></i>インターン</span>
+          <span><i class="cdot-slate"></i>その他</span>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-head"><h2 class="section-title"><span class="dot dot-slate"></span><span id="calDayTitle">選択した日</span></h2></div>
+      <div class="card"><div id="calDayList"></div></div>
+    </section>
+    <section class="section">
       <div class="section-head"><h2 class="section-title"><span class="dot dot-teal"></span>予定</h2></div>
       <div class="card"><div id="allEvents"></div></div>
     </section>
@@ -229,9 +401,9 @@
     </section>
   </div>
 
-  <!-- ===== NOTIFICATIONS ===== -->
+  <!-- ===== NOTIFICATIONS (Notification Center, opened from the bell) ===== -->
   <div class="view" id="view-notifications">
-    <div class="page-head"><h1>通知</h1><p>青：就活関連メール ／ 緑：スケジュール・リマインド ／ 紫：アプリの改善・更新 ／ 赤：重要な締切・緊急対応</p></div>
+    <div class="page-head"><h1>通知センター</h1><p>表示する通知の種類を選べます。</p></div>
     <div class="filter-row" id="notifFilters" style="margin-top:16px">
       <button class="filter-btn sel" data-filter="all">すべて</button>
       <button class="filter-btn" data-filter="mail">メール</button>
@@ -242,9 +414,80 @@
     <div class="card"><div id="notifList"></div></div>
   </div>
 
+  <!-- ===== INDUSTRIES ===== -->
+  <div class="view" id="view-industries">
+    <div class="page-head"><h1>業界ライブラリ</h1><p>業界の構造・動向・主な職種と企業を比較できます。</p></div>
+    <section class="section" style="margin-top:18px"><div class="card"><div id="industryList"></div></div></section>
+  </div>
+
+  <!-- ===== INDUSTRY DETAIL ===== -->
+  <div class="view" id="view-industry">
+    <div style="padding-top:14px"><button class="back-btn" id="industryBack">← 業界一覧に戻る</button></div>
+    <div id="industryDetail"></div>
+  </div>
+
+  <!-- ===== SELF ANALYSIS ===== -->
+  <div class="view" id="view-self">
+    <div class="page-head"><h1>自己分析</h1><p>閲覧専用です。編集は本体で。</p></div>
+    <section class="section" style="margin-top:18px"><div id="selfList"></div></section>
+  </div>
+
+  <!-- ===== ES / INTERVIEW PREP ===== -->
+  <div class="view" id="view-prep">
+    <div class="page-head"><h1>ES・面接対策</h1><p>閲覧専用です。編集は本体で。</p></div>
+    <section class="section" style="margin-top:18px"><div id="prepList"></div></section>
+  </div>
+
+  <!-- ===== MYPAGE ===== -->
+  <div class="view" id="view-mypage">
+    <div class="page-head"><h1>マイページ</h1><p>企業ごとのログインURL・ID・登録状態です。</p></div>
+    <section class="section" style="margin-top:18px"><div id="mypageList"></div></section>
+  </div>
+
+  <!-- ===== REFLECTIONS / ARCHIVE ===== -->
+  <div class="view" id="view-reflections">
+    <div class="page-head"><h1>振り返り・アーカイブ</h1></div>
+    <section class="section" id="reflectionSection" style="margin-top:18px">
+      <div class="section-head"><h2 class="section-title"><span class="dot dot-rose"></span>振り返り</h2></div>
+      <div id="reflectionList"></div>
+    </section>
+    <section class="section" id="archiveSection">
+      <div class="section-head"><h2 class="section-title"><span class="dot dot-slate"></span>完了済みの予定</h2></div>
+      <div class="card"><div id="archiveList"></div></div>
+    </section>
+  </div>
+
+  <!-- ===== IMPROVEMENT REQUESTS ===== -->
+  <div class="view" id="view-improvements">
+    <div class="page-head"><h1>改善リクエスト</h1><p>閲覧専用です。送信は本体で。</p></div>
+    <section class="section" style="margin-top:18px"><div class="card"><div id="improvementList"></div></div></section>
+  </div>
+
+  <!-- ===== LINKAGE ===== -->
+  <div class="view" id="view-linkage">
+    <div class="page-head"><h1>連携状況</h1></div>
+    <section class="section" style="margin-top:18px">
+      <div class="card">
+        <div class="link-row"><span class="link-ic" style="background:#1d2f4d;color:#93c5fd">G</span><div class="row-main"><div class="row-title">Gmail</div><div class="row-meta">就活メールを取り込み中</div></div><span class="status-pill status-ok">連携中</span></div>
+        <div class="link-row"><span class="link-ic" style="background:#12362a;color:#6ee7b7">Cal</span><div class="row-main"><div class="row-title">Google カレンダー</div><div class="row-meta">予定を読み取り専用で統合</div></div><span class="status-pill status-ok">連携中</span></div>
+        <div class="link-row"><span class="link-ic" style="background:#232a33;color:#cbd5e1">N</span><div class="row-main"><div class="row-title">Notion</div><div class="row-meta">構造化データの正本（接続待ち）</div></div><span class="status-pill status-wait">未接続</span></div>
+      </div>
+    </section>
+  </div>
+
   <!-- ===== SETTINGS ===== -->
   <div class="view" id="view-settings">
-    <div class="page-head"><h1>設定</h1><p>端末の登録状態と鍵を管理します。ログインやパスワード入力はありません。</p></div>
+    <div class="page-head"><h1>設定・オプション</h1></div>
+
+    <div class="setting-block" style="margin-top:18px">
+      <h3>テーマ</h3>
+      <p style="margin-bottom:10px">自動は端末の設定に合わせます。選んだテーマはこの端末に保存されます。</p>
+      <div class="filter-row" id="themeRow" style="margin-bottom:0">
+        <button class="filter-btn" data-theme-choice="auto">自動</button>
+        <button class="filter-btn" data-theme-choice="light">ライト</button>
+        <button class="filter-btn" data-theme-choice="dark">ダーク</button>
+      </div>
+    </div>
 
     <div class="setting-block">
       <h3>登録状態</h3>
@@ -253,27 +496,26 @@
     </div>
 
     <div class="setting-block" id="settingsCodeBlock" style="display:none">
-      <h3>登録コード（公開鍵）</h3>
-      <p>このコードは公開しても安全な鍵です。新しい端末で使うときや、データの再発行を頼むときに Muse へ送ってください。</p>
+      <h3>登録コード</h3>
+      <p>必要なときに Muse へ送ってください。</p>
       <div class="code-box"><div class="code-label">登録コード</div><div class="code-text" id="settingsCodeText"></div></div>
       <div style="margin-top:10px"><button class="btn-ghost" id="copyCodeBtn2">登録コードをコピー</button></div>
     </div>
 
     <div class="setting-block" id="settingsRegisterBlock" style="display:none">
       <h3>端末の登録</h3>
-      <p>まだこの端末の鍵がありません。登録すると登録コードが表示されます。</p>
+      <p>登録すると登録コードが表示されます。</p>
       <div style="margin-top:10px"><button class="btn-primary" id="registerBtn2">端末を登録する</button></div>
     </div>
 
     <div class="setting-block">
       <h3>データを再読み込み</h3>
-      <p>暗号化データをもう一度取得して復号します。Muse がデータを更新したあとに使ってください。</p>
-      <div style="margin-top:10px"><button class="btn-ghost" id="reloadBtn">再読み込みする</button></div>
+      <div><button class="btn-ghost" id="reloadBtn">再読み込みする</button></div>
     </div>
 
     <div class="setting-block">
       <h3>端末キーのリセット</h3>
-      <p>鍵を消すと、この端末ではデータを開けなくなります。再び表示するには、新しい登録コードを Muse に送って<strong style="color:#fda4af">データの再発行</strong>を受ける必要があります。</p>
+      <p>鍵を消すと、この端末ではデータを開けなくなります。</p>
       <div style="margin-top:10px"><button class="btn-danger" id="resetKeyBtn">端末キーをリセットする</button></div>
     </div>
   </div>
@@ -285,8 +527,6 @@
     <button class="nav-btn active" data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>今日</button>
     <button class="nav-btn" data-nav="companies"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-4h6v4"/></svg>企業</button>
     <button class="nav-btn" data-nav="schedule"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>予定</button>
-    <button class="nav-btn" data-nav="notifications"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>通知<span class="nav-badge" id="navNotifBadge">0</span></button>
-    <button class="nav-btn" data-nav="settings"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>設定</button>
   </div>
 </nav>
 
@@ -295,6 +535,36 @@
 <script>
 (function(){
   "use strict";
+  /* ---------- Theme (auto / light / dark, saved on device) ---------- */
+  var THEME_STORE = "career-os-28-theme";
+  function themeChoice(){ try{ var t=localStorage.getItem(THEME_STORE); return (t==="light"||t==="dark"||t==="auto")?t:"auto"; }catch(e){ return "auto"; } }
+  function resolvedTheme(choice){
+    if(choice==="light") return "light";
+    if(choice==="dark") return "dark";
+    return (window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches) ? "light" : "dark";
+  }
+  function applyTheme(){
+    var choice=themeChoice();
+    var res=resolvedTheme(choice);
+    document.documentElement.setAttribute("data-theme", res);
+    document.documentElement.style.colorScheme=res;
+    var meta=document.querySelector('meta[name="theme-color"]');
+    if(meta) meta.setAttribute("content", res==="light"?"#f3f5f7":"#0b0f14");
+    var btns=document.querySelectorAll("[data-theme-choice]");
+    for(var i=0;i<btns.length;i++) btns[i].classList.toggle("sel", btns[i].getAttribute("data-theme-choice")===choice);
+  }
+  var themeRow=document.getElementById("themeRow");
+  if(themeRow) themeRow.addEventListener("click", function(e){
+    var b=e.target.closest ? e.target.closest("[data-theme-choice]") : null; if(!b) return;
+    try{ localStorage.setItem(THEME_STORE, b.getAttribute("data-theme-choice")); }catch(err){}
+    applyTheme();
+  });
+  if(window.matchMedia){
+    var themeMq=matchMedia("(prefers-color-scheme: light)");
+    if(themeMq.addEventListener) themeMq.addEventListener("change", function(){ if(themeChoice()==="auto") applyTheme(); });
+  }
+  applyTheme();
+
   var KEY_STORE = "career-os-28-device-key-v1";
   var TASK_OVERRIDES = "career-os-28-mirror-task-overrides-v1";
   var HKDF_INFO = "career-os-28-mirror-v1";
@@ -382,6 +652,20 @@
     if (Object.prototype.hasOwnProperty.call(taskOverrides, k)) return !!taskOverrides[k];
     return !!task.done;
   }
+  function arr(x){ return Array.isArray(x)?x:[]; }
+  function isDoneObj(o){
+    if(!o) return false;
+    if(o.done===true || o.completed===true) return true;
+    var s=String(o.status||"");
+    return s.indexOf("完了")>=0 || s.indexOf("提出済み")>=0 || s.indexOf("終了")>=0 || s.toLowerCase()==="done" || s.toLowerCase()==="completed";
+  }
+  function mergedEvents(){
+    var evs=arr(data && data.events).map(function(e){ return e; });
+    var cals=arr(data && data.calendarEvents).map(function(e){
+      return {title:e.title||"", date:e.date||"", time:e.time||"", company:"", type:"カレンダー", note:"", status:e.status||"", source:"calendar"};
+    });
+    return evs.concat(cals);
+  }
 
   function remainInfo(dt){
     var diff = dt.getTime() - Date.now();
@@ -393,7 +677,6 @@
     if (hrs<24) return {label:"あと"+hrs+"時間", cls:"remain-red"};
     var days=Math.floor(hrs/24);
     if (days<3) return {label:"あと"+days+"日", cls:"remain-amber"};
-    if (days<7) return {label:"あと"+days+"日", cls:"remain-teal"};
     return {label:"あと"+days+"日", cls:"remain-slate"};
   }
   function parseDue(due){
@@ -409,18 +692,19 @@
     return s.slice(0,10).replace(/-/g,"/");
   }
   function emptyHTML(t, x){ return '<div class="empty"><div class="empty-title">'+esc(t)+'</div><div class="empty-text">'+esc(x)+'</div></div>'; }
-  var UNSYNCED_EMPTY = ["データ未同期です", "登録とデータ配置が完了すると、ここに内容が表示されます。"];
+  var UNSYNCED_EMPTY = ["データ未同期です", ""];
 
   /* ---------- Rendering ---------- */
   function renderTodayEvents(){
     var box=document.getElementById("todayEvents");
-    var all = (data && data.events) || [];
-    var list = all.filter(function(e){ return e.date===todayStr(); }).slice().sort(function(a,b){ return String(a.time||"").localeCompare(String(b.time||"")); });
-    if(!data){ box.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); }
-    else if(!list.length){ box.innerHTML=emptyHTML("今日の予定はありません", "今日に該当する予定は書き出されていません。"); }
-    else box.innerHTML=list.map(function(e){
-      return '<div class="row-item"><div class="time-chip">'+esc(e.time||"--:--")+'</div><div class="row-main"><div class="row-title">'+esc(e.title||"")+'</div>'+(e.company?'<div class="row-meta">'+esc(e.company)+(e.type?" ・ "+esc(e.type):"")+'</div>':"")+(e.note?'<div class="row-meta">'+esc(e.note)+'</div>':"")+'</div></div>';
-    }).join("");
+    var sec=document.getElementById("todayEventsSection");
+    var list = mergedEvents().filter(function(e){ return e.date===todayStr(); }).slice().sort(function(a,b){ return String(a.time||"").localeCompare(String(b.time||"")); });
+    if(!data || !list.length){ if(sec) sec.style.display="none"; box.innerHTML=""; }
+    else { if(sec) sec.style.display="block";
+      box.innerHTML=list.map(function(e){
+        return '<div class="row-item"><div class="time-chip">'+esc(e.time||"--:--")+'</div><div class="row-main"><div class="row-title">'+esc(e.title||"")+'</div>'+(e.company?'<div class="row-meta">'+esc(e.company)+(e.type?" ・ "+esc(e.type):"")+'</div>':(e.type?'<div class="row-meta">'+esc(e.type)+'</div>':""))+(e.note?'<div class="row-meta">'+esc(e.note)+'</div>':"")+'</div></div>';
+      }).join("");
+    }
     document.getElementById("statSchedule").textContent=list.length;
   }
   function deadlineRow(d){
@@ -430,32 +714,34 @@
   function renderDeadlines(){
     var all=((data && data.deadlines)||[]).slice().sort(function(a,b){ return String(a.due||"").localeCompare(String(b.due||"")); });
     var home=document.getElementById("homeDeadlines");
+    var homeSec=document.getElementById("homeDeadlinesSection");
     var full=document.getElementById("allDeadlines");
-    if(!data){ var h=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); home.innerHTML=h; full.innerHTML=h; }
-    else if(!all.length){ var h2=emptyHTML("締切はありません", "締切は書き出されていません。"); home.innerHTML=h2; full.innerHTML=h2; }
-    else { var html=all.map(deadlineRow).join(""); home.innerHTML=html; full.innerHTML=html; }
+    if(!data){ home.innerHTML=""; if(homeSec) homeSec.style.display="none"; full.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); }
+    else if(!all.length){ home.innerHTML=""; if(homeSec) homeSec.style.display="none"; full.innerHTML=emptyHTML("締切はありません", ""); }
+    else { if(homeSec) homeSec.style.display="block"; var html=all.map(deadlineRow).join(""); home.innerHTML=html; full.innerHTML=html; }
     var soon=0;
-    all.forEach(function(d){ var dt=parseDue(d.due); if(!dt) return; var diff=dt-Date.now(); if(diff<0 || diff<=48*3600*1000) soon++; });
+    all.forEach(function(d){ if(isDoneObj(d)) return; var dt=parseDue(d.due); if(!dt) return; var diff=dt-Date.now(); if(diff<0 || diff<=48*3600*1000) soon++; });
     document.getElementById("statDeadline").textContent = data ? soon : 0;
   }
   function renderTasks(){
     var box=document.getElementById("homeTasks");
-    var tasks=(data && data.tasks)||[];
-    if(!data){ box.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); }
-    else if(!tasks.length){ box.innerHTML=emptyHTML("Todoはありません", "Todoは書き出されていません。"); }
-    else box.innerHTML=tasks.map(function(t,i){
-      var done=taskDone(i,t);
-      return '<div class="todo-item"><button class="todo-check'+(done?" done":"")+'" data-task-idx="'+i+'" aria-label="完了切替"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button><div class="todo-text'+(done?" done":"")+'">'+esc(t.title||"")+'</div></div>';
+    var sec=document.getElementById("taskDueSection");
+    var tasks=arr(data && data.tasks).map(function(t,i){ return {t:t, i:i}; })
+      .filter(function(x){ return !!x.t.due; })
+      .sort(function(a,b){ return String(a.t.due).localeCompare(String(b.t.due)); });
+    if(!data || !tasks.length){ box.innerHTML=""; if(sec) sec.style.display="none"; return; }
+    if(sec) sec.style.display="block";
+    box.innerHTML=tasks.map(function(x){
+      var t=x.t; var done=taskDone(x.i,t) || isDoneObj(t);
+      var dt=parseDue(t.due); var r=dt?remainInfo(dt):{label:"",cls:"remain-slate"};
+      return '<div class="todo-item"><span class="todo-check'+(done?" done":"")+'" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div class="row-main"><div class="todo-text'+(done?" done":"")+'" style="padding-top:0">'+esc(t.title||"")+'</div>'+(t.company?'<div class="row-meta">'+esc(t.company)+'</div>':"")+'<div class="row-meta">期限：'+esc(fmtDue(t.due))+'</div></div>'+(r.label?'<span class="remain '+r.cls+'">'+esc(r.label)+'</span>':"")+'</div>';
     }).join("");
-    var doneCount=tasks.filter(function(t,i){ return taskDone(i,t); }).length;
-    document.getElementById("statTodo").textContent = data ? (tasks.length-doneCount) : 0;
-    document.getElementById("todoCountLabel").textContent = (data && tasks.length) ? doneCount+" / "+tasks.length+" 完了" : "";
   }
   function renderAllEvents(){
     var box=document.getElementById("allEvents");
-    var all=((data && data.events)||[]).slice().sort(function(a,b){ return (String(a.date||"")+String(a.time||"")).localeCompare(String(b.date||"")+String(b.time||"")); });
+    var all=mergedEvents().slice().sort(function(a,b){ return (String(a.date||"")+String(a.time||"")).localeCompare(String(b.date||"")+String(b.time||"")); });
     if(!data){ box.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); return; }
-    if(!all.length){ box.innerHTML=emptyHTML("予定はありません", "予定は書き出されていません。"); return; }
+    if(!all.length){ box.innerHTML=emptyHTML("予定はありません", ""); return; }
     box.innerHTML=all.map(function(e){
       var dstr=e.date?e.date.slice(5).replace("-","/"):"--/--";
       return '<div class="row-item"><div class="date-chip">'+esc(dstr)+'<br>'+esc(e.time||"")+'</div><div class="row-main"><div class="row-title">'+esc(e.title||"")+'</div>'+(e.company?'<div class="row-meta">'+esc(e.company)+(e.type?" ・ "+esc(e.type):"")+'</div>':"")+(e.note?'<div class="row-meta">'+esc(e.note)+'</div>':"")+'</div>'+(e.type?'<span class="type-chip">'+esc(e.type)+'</span>':"")+'</div>';
@@ -465,26 +751,44 @@
     var box=document.getElementById("companyList");
     var list=(data && data.companies)||[];
     if(!data){ box.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); return; }
-    if(!list.length){ box.innerHTML=emptyHTML("企業はまだありません", "企業は書き出されていません。"); return; }
+    if(!list.length){ box.innerHTML=emptyHTML("企業はまだありません", ""); return; }
     box.innerHTML=list.map(function(c,i){
       return '<button class="company-item" data-company="'+i+'"><span class="company-avatar">'+esc((c.name||"?").slice(0,1))+'</span><span class="row-main"><span class="row-title" style="display:block">'+esc(c.name||"")+'</span>'+(c.industry?'<span class="row-meta" style="display:block">'+esc(c.industry)+'</span>':"")+'</span>'+(c.status?'<span class="status-chip">'+esc(c.status)+'</span>':"")+'</button>';
     }).join("");
   }
   function openCompany(idx){
-    var list=(data && data.companies)||[];
+    var list=arr(data && data.companies);
     var c=list[idx]; if(!c) return;
     var r=c.research||{};
-    var chapters=r.chapters||[];
+    var chapters=arr(r.chapters);
     var html='';
-    html+='<div style="padding-top:6px"><h1 style="font-size:26px;font-weight:800;line-height:1.3">'+esc(c.name||"")+'</h1>';
-    html+='<p style="font-size:12.5px;color:#8b98a5;margin-top:6px">'+(c.industry?esc(c.industry):"")+(c.status?' ・ <span style="color:#5eead4;font-weight:700">'+esc(c.status)+'</span>':"")+'</p></div>';
-    if(r.summary){ html+='<section class="section"><div class="section-head"><h2 class="section-title"><span class="dot dot-teal"></span>要約</h2></div><div class="report-summary">'+esc(r.summary)+'</div></section>'; }
+    html+='<div style="padding-top:6px"><h1 style="font-size:26px;font-weight:800;line-height:1.3">'+esc(c.name||"")+(c.favorite? ' <span class="fav-star" aria-label="お気に入り">★</span>':"")+'</h1>';
+    html+='<p style="font-size:12.5px;color:var(--muted);margin-top:6px">'+(c.industry?esc(c.industry):"")+(c.status?' ・ <span style="color:var(--teal-light);font-weight:700">'+esc(c.status)+'</span>':"")+'</p></div>';
+    /* Basic info */
+    var infoRows="";
+    if(c.industry) infoRows+='<div class="info-row"><span class="info-label">業界</span><span class="info-value">'+esc(c.industry)+'</span></div>';
+    if(c.status) infoRows+='<div class="info-row"><span class="info-label">選考状況</span><span class="info-value">'+esc(c.status)+'</span></div>';
+    if(c.aspiration) infoRows+='<div class="info-row"><span class="info-label">志望度</span><span class="info-value">'+esc(c.aspiration)+'</span></div>';
+    if(c.fit) infoRows+='<div class="info-row"><span class="info-label">合う点</span><span class="info-value">'+esc(c.fit)+'</span></div>';
+    if(c.concerns) infoRows+='<div class="info-row"><span class="info-label">気になる点</span><span class="info-value">'+esc(c.concerns)+'</span></div>';
+    if(infoRows) html+='<section class="section"><div class="section-head"><h2 class="section-title"><span class="dot dot-slate"></span>基本情報</h2></div><div class="card">'+infoRows+'</div></section>';
+    /* Selection summary */
+    if(c.selectionSummary) html+='<section class="section"><div class="section-head"><h2 class="section-title"><span class="dot dot-blue"></span>選考サマリ</h2></div><div class="card"><div style="padding:16px" class="entry-body">'+esc(c.selectionSummary)+'</div></div></section>';
+    /* Mypage */
+    if(c.mypageUrl || c.mypageLoginId || c.mypageStatus){
+      var mp="";
+      if(c.mypageStatus) mp+='<div class="info-row"><span class="info-label">登録状態</span><span class="info-value">'+esc(c.mypageStatus)+'</span></div>';
+      if(c.mypageLoginId) mp+='<div class="info-row"><span class="info-label">ログインID</span><span class="info-value">'+esc(c.mypageLoginId)+'</span></div>';
+      if(c.mypageUrl) mp+='<div style="padding:14px 16px"><a class="btn-open" href="'+esc(c.mypageUrl)+'" target="_blank" rel="noopener noreferrer">マイページを開く ›</a></div>';
+      html+='<section class="section"><div class="section-head"><h2 class="section-title"><span class="dot dot-purple"></span>マイページ</h2></div><div class="card">'+mp+'</div></section>';
+    }
+    /* Research report: summary -> TOC -> all chapters */
+    if(r.summary){ html+='<section class="section"><div class="section-head"><h2 class="section-title"><span class="dot dot-teal"></span>企業研究レポート｜要約</h2></div><div class="report-summary">'+esc(r.summary)+'</div></section>'; }
     if(chapters.length){
       html+='<section class="section"><div class="section-head"><h2 class="section-title"><span class="dot dot-slate"></span>目次</h2></div><div class="card"><div class="toc">'+chapters.map(function(ch,i){ return '<a href="#chapter-'+i+'"><span class="toc-num">'+(i+1)+'.</span><span>'+esc(ch.title||"")+'</span></a>'; }).join("")+'</div></div></section>';
       html+='<section class="section"><div class="card">'+chapters.map(function(ch,i){ return '<div class="chapter" id="chapter-'+i+'"><h3>'+(i+1)+'. '+esc(ch.title||"")+'</h3><div class="chapter-body">'+esc(ch.body||"")+'</div></div>'; }).join("")+'</div></section>';
-    } else if(!r.summary) {
-      html+='<section class="section"><div class="card">'+emptyHTML("企業研究はまだありません", "この企業の研究レポートは書き出されていません。")+'</div></section>';
     }
+    html+='<p class="readonly-note">閲覧専用です。編集は本体で。</p>';
     document.getElementById("companyDetail").innerHTML=html;
     showView("company");
   }
@@ -501,18 +805,233 @@
   function renderNotifications(){
     var box=document.getElementById("notifList");
     var all=(data && data.notifications)||[];
+    var unread=all.filter(function(n){ return n.read!==true; }).length;
     var badge=document.getElementById("bellBadge");
-    var navBadge=document.getElementById("navNotifBadge");
-    badge.textContent=all.length; badge.classList.toggle("show", !!data && all.length>0);
-    navBadge.textContent=all.length; navBadge.classList.toggle("show", !!data && all.length>0);
+    if(badge){ badge.textContent=unread; badge.classList.toggle("show", !!data && unread>0); }
+    var statN=document.getElementById("statNotif");
+    if(statN) statN.textContent = data ? unread : 0;
     if(!data){ box.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); return; }
     var list=all.filter(function(n){ return notifFilter==="all" || notifKind(n.category)===notifFilter; });
-    if(!list.length){ box.innerHTML=emptyHTML("通知はありません", "この分類の通知は書き出されていません。"); return; }
+    if(!list.length){ box.innerHTML=emptyHTML("通知はありません", ""); return; }
     box.innerHTML=list.map(function(n){
       var st=KIND_STYLE[notifKind(n.category)];
       return '<div class="notif-item"><span class="notif-bar '+st.bar+'"></span><div class="row-main"><div class="notif-cat '+st.cls+'">'+esc(st.label)+(n.date?' ・ '+esc(String(n.date).slice(0,10).replace(/-/g,"/")):"")+'</div><div class="row-title" style="margin-top:3px">'+esc(n.title||"")+'</div>'+(n.body?'<div class="row-meta">'+esc(n.body)+'</div>':"")+'</div></div>';
     }).join("");
   }
+  /* ---------- Axis / goal ---------- */
+  function renderAxis(){
+    var sec=document.getElementById("axisSection");
+    var card=document.getElementById("axisCard");
+    var axis=data && data.careerAxis ? String(data.careerAxis) : "";
+    var goal=data && data.careerGoal ? String(data.careerGoal) : "";
+    if(!axis && !goal){ sec.style.display="none"; card.innerHTML=""; return; }
+    var html="";
+    if(axis) html+='<div class="axis-block"><div class="axis-label">就活の軸</div><div class="axis-text">'+esc(axis)+'</div></div>';
+    if(goal) html+='<div class="axis-block"><div class="axis-label goal">目標</div><div class="axis-text">'+esc(goal)+'</div></div>';
+    html+='<p class="readonly-note">編集は本体で（設定からも変更できます）</p>';
+    card.innerHTML=html;
+    sec.style.display="block";
+  }
+  /* ---------- Home notification summary ---------- */
+  function renderHomeNotifs(){
+    var sec=document.getElementById("homeNotifSection");
+    var box=document.getElementById("homeNotifs");
+    var all=arr(data && data.notifications);
+    if(!data || !all.length){ sec.style.display="none"; box.innerHTML=""; return; }
+    sec.style.display="block";
+    box.innerHTML=all.slice(0,3).map(function(n){
+      var st=KIND_STYLE[notifKind(n.category)];
+      return '<div class="notif-item"><span class="notif-bar '+st.bar+'"></span><div class="row-main"><div class="notif-cat '+st.cls+'">'+esc(st.label)+(n.date?' ・ '+esc(String(n.date).slice(0,10).replace(/-/g,"/")):"")+'</div><div class="row-title" style="margin-top:3px">'+esc(n.title||"")+'</div>'+(n.body?'<div class="row-meta">'+esc(n.body)+'</div>':"")+'</div></div>';
+    }).join("");
+  }
+  /* ---------- Industries ---------- */
+  function renderIndustries(){
+    var box=document.getElementById("industryList");
+    var list=arr(data && data.industries);
+    if(!data){ box.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); return; }
+    if(!list.length){ box.innerHTML=emptyHTML("業界データはまだありません", ""); return; }
+    box.innerHTML=list.map(function(ind,i){
+      var meta=[ind.outlook, ind.keyCompanies].filter(Boolean).join(" ・ ");
+      return '<button class="company-item" data-industry="'+i+'"><span class="company-avatar">'+esc((ind.name||"?").slice(0,1))+'</span><span class="row-main"><span class="row-title" style="display:block">'+esc(ind.name||"")+'</span>'+(meta?'<span class="row-meta" style="display:block">'+esc(meta)+'</span>':"")+'</span><span class="status-chip">詳細 ›</span></button>';
+    }).join("");
+  }
+  function openIndustry(idx){
+    var list=arr(data && data.industries);
+    var ind=list[idx]; if(!ind) return;
+    var html='<div style="padding-top:6px"><h1 style="font-size:26px;font-weight:800;line-height:1.3">'+esc(ind.name||"")+'</h1></div>';
+    var blocks=[["業界の構造",ind.structure],["動向・トレンド",ind.trends],["主な職種",ind.roles],["主要企業",ind.keyCompanies],["見通し",ind.outlook]];
+    var any=false;
+    blocks.forEach(function(b){
+      if(!b[1]) return; any=true;
+      html+='<section class="section"><div class="section-head"><h2 class="section-title"><span class="dot dot-teal"></span>'+esc(b[0])+'</h2></div><div class="card"><div style="padding:16px" class="entry-body">'+esc(b[1])+'</div></div></section>';
+    });
+    if(!any) html+='<section class="section"><div class="card">'+emptyHTML("詳細はまだありません", "")+'</div></section>';
+    document.getElementById("industryDetail").innerHTML=html;
+    showView("industry");
+  }
+  /* ---------- Self analysis ---------- */
+  function renderSelf(){
+    var box=document.getElementById("selfList");
+    var list=arr(data && data.selfEntries);
+    if(!data){ box.innerHTML='<div class="card">'+emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1])+'</div>'; return; }
+    if(!list.length){ box.innerHTML='<div class="card">'+emptyHTML("自己分析はまだありません", "")+'</div>'; return; }
+    box.innerHTML=list.map(function(e){
+      return '<div class="card" style="margin-bottom:12px"><div style="padding:16px"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="row-title">'+esc(e.title||"")+'</span>'+(e.kind?'<span class="type-chip">'+esc(e.kind)+'</span>':"")+'</div>'+(e.body?'<div class="entry-body" style="margin-top:10px">'+esc(e.body)+'</div>':"")+'</div></div>';
+    }).join("");
+  }
+  /* ---------- ES / interview prep ---------- */
+  function renderPrep(){
+    var box=document.getElementById("prepList");
+    var list=arr(data && data.prepItems);
+    if(!data){ box.innerHTML='<div class="card">'+emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1])+'</div>'; return; }
+    if(!list.length){ box.innerHTML='<div class="card">'+emptyHTML("ES・面接対策はまだありません", "")+'</div>'; return; }
+    box.innerHTML=list.map(function(p){
+      var body=String(p.body||"");
+      var len=body.length;
+      var targetNum=parseInt(p.target,10);
+      var hasTarget=!isNaN(targetNum) && targetNum>0;
+      var pct=hasTarget?Math.min(100, Math.round(len/targetNum*100)):0;
+      var meta='<div class="row-meta" style="margin-top:10px">本文 '+len+'字'+(hasTarget?(' ／ 目標 '+targetNum+'字（'+pct+'%）'):((p.target)?(' ／ 目標 '+esc(p.target)):""))+'</div>';
+      var bar=hasTarget?'<div class="prep-progress"><i style="width:'+pct+'%"></i></div>':"";
+      return '<div class="card" style="margin-bottom:12px"><div style="padding:16px"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="row-title">'+esc(p.title||"")+'</span>'+(p.kind?'<span class="type-chip">'+esc(p.kind)+'</span>':"")+(p.company?'<span class="type-chip">'+esc(p.company)+'</span>':"")+'</div>'+(body?'<div class="entry-body" style="margin-top:10px">'+esc(body)+'</div>':"")+meta+bar+'</div></div>';
+    }).join("");
+  }
+  /* ---------- Mypage list ---------- */
+  function renderMypage(){
+    var box=document.getElementById("mypageList");
+    var list=arr(data && data.companies).filter(function(c){ return c.mypageUrl || c.mypageLoginId || c.mypageStatus; });
+    if(!data){ box.innerHTML='<div class="card">'+emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1])+'</div>'; return; }
+    if(!list.length){ box.innerHTML='<div class="card">'+emptyHTML("マイページ情報はまだありません", "")+'</div>'; return; }
+    box.innerHTML=list.map(function(c){
+      var rows="";
+      if(c.mypageStatus) rows+='<div class="info-row"><span class="info-label">登録状態</span><span class="info-value">'+esc(c.mypageStatus)+'</span></div>';
+      if(c.mypageLoginId) rows+='<div class="info-row"><span class="info-label">ログインID</span><span class="info-value">'+esc(c.mypageLoginId)+'</span></div>';
+      if(c.mypageUrl) rows+='<div style="padding:14px 16px"><a class="btn-open" href="'+esc(c.mypageUrl)+'" target="_blank" rel="noopener noreferrer">マイページを開く ›</a></div>';
+      return '<div class="card" style="margin-bottom:12px"><div style="padding:14px 16px 4px"><span class="row-title">'+esc(c.name||"")+'</span></div>'+rows+'</div>';
+    }).join("");
+  }
+  /* ---------- Reflections / archive ---------- */
+  function renderReflections(){
+    var rSec=document.getElementById("reflectionSection");
+    var rBox=document.getElementById("reflectionList");
+    var aSec=document.getElementById("archiveSection");
+    var aBox=document.getElementById("archiveList");
+    var refs=arr(data && data.reflections);
+    if(!data || !refs.length){ rSec.style.display="none"; rBox.innerHTML=""; }
+    else {
+      rSec.style.display="block";
+      rBox.innerHTML=refs.map(function(r){
+        return '<div class="card" style="margin-bottom:12px"><div style="padding:16px"><div class="row-title">'+esc(r.title||"")+'</div>'+((r.company||r.date)?'<div class="row-meta">'+esc(r.company||"")+(r.company&&r.date?" ・ ":"")+esc(r.date?String(r.date).slice(0,10).replace(/-/g,"/"):"")+'</div>':"")+(r.body?'<div class="entry-body" style="margin-top:10px">'+esc(r.body)+'</div>':"")+'</div></div>';
+      }).join("");
+    }
+    var today=todayStr();
+    var done=mergedEvents().filter(function(e){ return isDoneObj(e) || (e.date && e.date<today); })
+      .sort(function(a,b){ return (String(b.date||"")+String(b.time||"")).localeCompare(String(a.date||"")+String(a.time||"")); });
+    if(!data || !done.length){ aSec.style.display="none"; aBox.innerHTML=""; }
+    else {
+      aSec.style.display="block";
+      aBox.innerHTML=done.map(function(e){
+        var dstr=e.date?e.date.slice(5).replace("-","/"):"--/--";
+        return '<div class="row-item"><div class="date-chip">'+esc(dstr)+'<br>'+esc(e.time||"")+'</div><div class="row-main"><div class="row-title">'+esc(e.title||"")+'</div>'+(e.company?'<div class="row-meta">'+esc(e.company)+(e.type?" ・ "+esc(e.type):"")+'</div>':"")+(e.note?'<div class="row-meta">'+esc(e.note)+'</div>':"")+'</div></div>';
+      }).join("");
+    }
+  }
+  /* ---------- Improvement requests ---------- */
+  function renderImprovements(){
+    var box=document.getElementById("improvementList");
+    var list=arr(data && data.improvementRequests);
+    if(!data){ box.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); return; }
+    if(!list.length){ box.innerHTML=emptyHTML("改善リクエストはまだありません", ""); return; }
+    box.innerHTML=list.map(function(r){
+      return '<div class="row-item"><div class="row-main"><div class="row-title" style="font-weight:600">'+esc(r.content||"")+'</div>'+(r.date?'<div class="row-meta">'+esc(String(r.date).slice(0,10).replace(/-/g,"/"))+'</div>':"")+'</div>'+(r.status?'<span class="status-chip">'+esc(r.status)+'</span>':"")+'</div>';
+    }).join("");
+  }
+  /* ---------- Today's top priority ---------- */
+  function renderPriority(){
+    var sec=document.getElementById("prioritySection");
+    var card=document.getElementById("priorityCard");
+    if(!data){ sec.style.display="none"; return; }
+    var now=Date.now();
+    var dlAll=arr(data.deadlines).filter(function(d){ return !isDoneObj(d); })
+      .map(function(d){ return {d:d, dt:parseDue(d.due)}; }).filter(function(x){ return x.dt; });
+    var upcoming=dlAll.filter(function(x){ return x.dt.getTime()>=now; }).sort(function(a,b){ return a.dt-b.dt; });
+    var overdue=dlAll.filter(function(x){ return x.dt.getTime()<now; }).sort(function(a,b){ return b.dt-a.dt; });
+    var p=null;
+    if(upcoming.length){ var u=upcoming[0]; p={kindLabel:"最優先の締切", company:u.d.company||"", title:u.d.title||"", note:u.d.note||"", when:"締切 "+fmtDue(u.d.due), dt:u.dt}; }
+    else if(overdue.length){ var o=overdue[0]; p={kindLabel:"最優先の締切", company:o.d.company||"", title:o.d.title||"", note:o.d.note||"", when:"締切 "+fmtDue(o.d.due), dt:o.dt}; }
+    else {
+      var evs=mergedEvents().map(function(e){
+        var dt=null;
+        if(e.date){ dt=new Date(e.date+"T"+(e.time?e.time+":00":"23:59:00")); if(isNaN(dt.getTime())) dt=null; }
+        return {e:e, dt:dt};
+      }).filter(function(x){ return x.dt && x.dt.getTime()>=now; }).sort(function(a,b){ return a.dt-b.dt; });
+      if(evs.length){
+        var e0=evs[0].e;
+        p={kindLabel:"次の予定", company:e0.company||"", title:e0.title||"", note:e0.note||"", when:String(e0.date||"").replace(/-/g,"/")+(e0.time?" "+e0.time:""), dt:evs[0].dt};
+      }
+    }
+    if(!p){ sec.style.display="none"; return; }
+    var r=remainInfo(p.dt);
+    card.innerHTML='<div class="priority-kind">'+esc(p.kindLabel)+'</div>'
+      +'<div class="priority-title">'+esc(p.title)+'</div>'
+      +(p.company?'<div class="priority-company">'+esc(p.company)+'</div>':"")
+      +'<div class="priority-meta"><span class="priority-when">'+esc(p.when)+'</span>'+(r.label?'<span class="remain '+r.cls+'">'+esc(r.label)+'</span>':"")+'</div>'
+      +(p.note?'<div class="row-meta" style="margin-top:10px">'+esc(p.note)+'</div>':"");
+    sec.style.display="block";
+  }
+
+  /* ---------- Month calendar ---------- */
+  var calCursor=null;
+  var calSelected=todayStr();
+  function ensureCalCursor(){ if(!calCursor){ var n=new Date(); calCursor={y:n.getFullYear(), m:n.getMonth()}; } }
+  function typeDotClass(type){
+    var t=String(type||"");
+    if(t.indexOf("面接")>=0) return "cdot-blue";
+    if(t.indexOf("説明会")>=0 || t.indexOf("セミナー")>=0 || t.indexOf("座談会")>=0) return "cdot-teal";
+    if(t.indexOf("ES")>=0 || t.indexOf("エントリーシート")>=0) return "cdot-amber";
+    if(t.indexOf("テスト")>=0 || t.indexOf("適性")>=0) return "cdot-purple";
+    if(t.indexOf("インターン")>=0) return "cdot-green";
+    return "cdot-slate";
+  }
+  function itemsOn(dateStr){
+    var evs=mergedEvents().filter(function(e){ return e.date===dateStr; });
+    var dls=arr(data && data.deadlines).filter(function(d){ return d.due && String(d.due).slice(0,10)===dateStr; });
+    return {events:evs, deadlines:dls};
+  }
+  function renderCalendar(){
+    ensureCalCursor();
+    document.getElementById("calLabel").textContent=calCursor.y+"年"+(calCursor.m+1)+"月";
+    var grid=document.getElementById("calGrid");
+    var startDow=new Date(calCursor.y, calCursor.m, 1).getDay();
+    var daysInMonth=new Date(calCursor.y, calCursor.m+1, 0).getDate();
+    var today=todayStr();
+    var html="";
+    for(var i=0;i<startDow;i++) html+='<div class="cal-cell cal-blank"></div>';
+    for(var day=1; day<=daysInMonth; day++){
+      var ds=calCursor.y+"-"+pad(calCursor.m+1)+"-"+pad(day);
+      var it=data?itemsOn(ds):{events:[],deadlines:[]};
+      var dots=it.deadlines.map(function(){ return "cdot-rose"; })
+        .concat(it.events.map(function(e){ return typeDotClass(e.type); }))
+        .slice(0,3).map(function(c){ return '<span class="cal-dot '+c+'"></span>'; }).join("");
+      html+='<button class="cal-cell'+(ds===today?" cal-today":"")+(ds===calSelected?" cal-sel":"")+'" data-cal-day="'+ds+'" aria-label="'+ds+'"><span class="cal-daynum">'+day+'</span>'+(dots?'<span class="cal-dots">'+dots+'</span>':"")+'</button>';
+    }
+    grid.innerHTML=html;
+    renderCalDay();
+  }
+  function renderCalDay(){
+    var box=document.getElementById("calDayList");
+    var d=new Date(calSelected+"T00:00:00");
+    document.getElementById("calDayTitle").textContent=isNaN(d.getTime())?calSelected:fmtDateJP(d);
+    if(!data){ box.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); return; }
+    var it=itemsOn(calSelected);
+    if(!it.events.length && !it.deadlines.length){ box.innerHTML=emptyHTML("この日の予定・締切はありません", "別の日を選ぶと、その日の内容がここに表示されます。"); return; }
+    var html=it.events.slice().sort(function(a,b){ return String(a.time||"").localeCompare(String(b.time||"")); }).map(function(e){
+      return '<div class="row-item"><div class="time-chip">'+esc(e.time||"--:--")+'</div><div class="row-main"><div class="row-title">'+esc(e.title||"")+'</div>'+(e.company?'<div class="row-meta">'+esc(e.company)+(e.type?" ・ "+esc(e.type):"")+'</div>':"")+(e.note?'<div class="row-meta">'+esc(e.note)+'</div>':"")+'</div>'+(e.type?'<span class="type-chip">'+esc(e.type)+'</span>':"")+'</div>';
+    }).join("");
+    html+=it.deadlines.map(deadlineRow).join("");
+    box.innerHTML=html;
+  }
+
   function renderSyncUI(){
     keyRecord=loadKeyRecord();
     var regCard=document.getElementById("regCard");
@@ -526,35 +1045,35 @@
     if(!keyRecord){
       syncState = syncState==="checking" ? "checking" : "unregistered";
       regCard.style.display="block";
-      syncLine.textContent="この端末は未登録です。下のボタンから登録してください。";
+      syncLine.textContent="未登録です。";
       status.innerHTML='<span class="status-pill status-wait">未登録</span>';
-      sync.textContent="端末キーがまだ作られていません。";
+      sync.textContent="";
       codeBlock.style.display="none"; regBlock.style.display="block";
     } else {
       codeBlock.style.display="block"; regBlock.style.display="none";
       document.getElementById("settingsCodeText").textContent=keyRecord.pubB64||"";
       if(syncState==="synced" && data){
         syncLine.textContent="同期済み"+(data.exportedAt?" ・ 書き出し日時："+String(data.exportedAt).replace("T"," ").slice(0,16):"");
-        status.innerHTML='<span class="status-pill status-ok">登録済み ・ データ復号済み</span>';
-        sync.textContent="この端末の鍵でデータを開けています。"+(data.exportedAt?"書き出し日時："+String(data.exportedAt):"");
+        status.innerHTML='<span class="status-pill status-ok">登録済み ・ 同期済み</span>';
+        sync.textContent=data.exportedAt?("書き出し日時："+String(data.exportedAt).replace("T"," ").slice(0,16)):"";
       } else if(syncState==="checking"){
-        syncLine.textContent="暗号化データを確認しています…";
+        syncLine.textContent="読み込み中…";
         status.innerHTML='<span class="status-pill status-wait">登録済み ・ 確認中</span>';
         sync.textContent="";
       } else {
         unsync.style.display="block";
         if(syncState==="decrypt-failed"){
-          document.getElementById("unsyncText").textContent="暗号化データは見つかりましたが、この端末の鍵では開けませんでした。登録コードが Muse に渡したものと一致しているか、設定画面で確認してください。一致しない場合は、現在の登録コードを送り直してデータの再発行を受けてください。";
+          document.getElementById("unsyncText").textContent="この端末ではデータを開けませんでした。右上のメニューで登録コードを確認してください。";
         } else {
-          document.getElementById("unsyncText").textContent="暗号化データがまだ配置されていません。登録コードを Muse に送ると、あなたのデータがこの端末向けに暗号化されて配置されます。すでに送った場合は、配置が完了するまで少し待ってから開き直してください。";
+          document.getElementById("unsyncText").textContent="データがまだ届いていません。少し待ってから開き直してください。";
         }
-        syncLine.textContent="データ未同期です。登録コードを Muse に送ってください。";
+        syncLine.textContent="データ未同期です。";
         status.innerHTML='<span class="status-pill status-wait">登録済み ・ データ未同期</span>';
-        sync.textContent="暗号化データが未配置か、この端末の鍵では開けませんでした。";
+        sync.textContent="データ未同期です。";
       }
     }
   }
-  function renderAll(){ renderSyncUI(); renderTodayEvents(); renderDeadlines(); renderTasks(); renderAllEvents(); renderCompanies(); renderNotifications(); }
+  function renderAll(){ renderSyncUI(); renderAxis(); renderPriority(); renderTodayEvents(); renderDeadlines(); renderTasks(); renderAllEvents(); renderCalendar(); renderCompanies(); renderNotifications(); renderHomeNotifs(); renderIndustries(); renderSelf(); renderPrep(); renderMypage(); renderReflections(); renderImprovements(); }
 
   /* ---------- Load & decrypt ---------- */
   function loadMirror(){
@@ -580,24 +1099,54 @@
   function showView(name){
     var views=document.querySelectorAll(".view");
     for(var i=0;i<views.length;i++) views[i].classList.toggle("active", views[i].id==="view-"+name);
+    var navMap={home:"home", companies:"companies", company:"companies", mypage:"companies", schedule:"schedule"};
     var navs=document.querySelectorAll("[data-nav]");
-    for(var j=0;j<navs.length;j++) navs[j].classList.toggle("active", navs[j].getAttribute("data-nav")===name || (name==="company" && navs[j].getAttribute("data-nav")==="companies"));
+    for(var j=0;j<navs.length;j++) navs[j].classList.toggle("active", navMap[name] && navs[j].getAttribute("data-nav")===navMap[name]);
+    if(typeof closeMenu==="function") closeMenu();
     window.scrollTo({top:0});
   }
   document.querySelectorAll("[data-nav]").forEach(function(b){ b.addEventListener("click", function(){ showView(b.getAttribute("data-nav")); }); });
-  document.getElementById("bellBtn").addEventListener("click", function(){ showView("notifications"); });
+  document.getElementById("bellBtn").addEventListener("click", function(){ closeMenu(); showView("notifications"); });
+  /* ---------- Hamburger menu (settings & device functions) ---------- */
+  var menuSheet=document.getElementById("menuSheet");
+  var menuBackdrop=document.getElementById("menuBackdrop");
+  var menuBtn=document.getElementById("menuBtn");
+  function openMenu(){
+    if(menuSheet) menuSheet.classList.add("open");
+    if(menuSheet) menuSheet.setAttribute("aria-hidden","false");
+    if(menuBackdrop) menuBackdrop.classList.add("open");
+    if(menuBtn) menuBtn.setAttribute("aria-expanded","true");
+  }
+  function closeMenu(){
+    if(menuSheet) menuSheet.classList.remove("open");
+    if(menuSheet) menuSheet.setAttribute("aria-hidden","true");
+    if(menuBackdrop) menuBackdrop.classList.remove("open");
+    if(menuBtn) menuBtn.setAttribute("aria-expanded","false");
+  }
+  if(menuBtn) menuBtn.addEventListener("click", function(){ if(menuSheet && menuSheet.classList.contains("open")) closeMenu(); else openMenu(); });
+  var menuCloseBtn=document.getElementById("menuCloseBtn");
+  if(menuCloseBtn) menuCloseBtn.addEventListener("click", closeMenu);
+  if(menuBackdrop) menuBackdrop.addEventListener("click", closeMenu);
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeMenu(); });
   document.getElementById("companyBack").addEventListener("click", function(){ showView("companies"); });
+  var industryBack=document.getElementById("industryBack");
+  if(industryBack) industryBack.addEventListener("click", function(){ showView("industries"); });
+  var notifMore=document.getElementById("notifMoreBtn");
+  if(notifMore) notifMore.addEventListener("click", function(){ showView("notifications"); });
+  var menuSheetEl=document.getElementById("menuSheet");
+  if(menuSheetEl) menuSheetEl.addEventListener("click", function(e){
+    var g=e.target.closest ? e.target.closest("[data-goto]") : null;
+    if(g) showView(g.getAttribute("data-goto"));
+  });
+  document.getElementById("calPrev").addEventListener("click", function(){ ensureCalCursor(); calCursor.m--; if(calCursor.m<0){ calCursor.m=11; calCursor.y--; } renderCalendar(); });
+  document.getElementById("calNext").addEventListener("click", function(){ ensureCalCursor(); calCursor.m++; if(calCursor.m>11){ calCursor.m=0; calCursor.y++; } renderCalendar(); });
   document.addEventListener("click", function(e){
+    var cd=e.target.closest ? e.target.closest("[data-cal-day]") : null;
+    if(cd){ calSelected=cd.getAttribute("data-cal-day"); renderCalendar(); return; }
     var el=e.target.closest ? e.target.closest("[data-company]") : null;
     if(el){ openCompany(parseInt(el.getAttribute("data-company"),10)); return; }
-    var tk=e.target.closest ? e.target.closest("[data-task-idx]") : null;
-    if(tk && data && data.tasks){
-      var idx=parseInt(tk.getAttribute("data-task-idx"),10);
-      var task=data.tasks[idx]; if(!task) return;
-      var k=idx+":"+(task.title||"");
-      taskOverrides[k]=!taskDone(idx, task);
-      saveOverrides(); renderTasks();
-    }
+    var ind=e.target.closest ? e.target.closest("[data-industry]") : null;
+    if(ind){ openIndustry(parseInt(ind.getAttribute("data-industry"),10)); return; }
   });
   document.getElementById("notifFilters").addEventListener("click", function(e){
     var b=e.target.closest ? e.target.closest("[data-filter]") : null; if(!b) return;
@@ -651,7 +1200,7 @@
     document.getElementById("heroDay").textContent=(now.getMonth()+1)+"月"+now.getDate()+"日";
     var h=now.getHours();
     var greet=h<5?"おつかれさまです":h<11?"おはようございます":h<17?"こんにちは":h<22?"おつかれさまです":"今日も一日おつかれさまでした";
-    document.getElementById("heroGreet").textContent=greet+"。今日の予定と締切を、下でまとめて確認できます。";
+    document.getElementById("heroGreet").textContent=greet+"。";
   }
 
   /* Dynamic manifest (Add to Home Screen) */
@@ -668,6 +1217,28 @@
     /* keep home clean: code lives in settings */
     area.style.display="none";
   }
+  /* Pin the bottom tab bar to the visual viewport's bottom edge.
+     iOS Safari / standalone can let position:fixed drift while scrolling;
+     tracking visualViewport keeps the bar glued to the screen bottom. */
+  var bottomNav=document.querySelector(".bottom-nav");
+  function pinNav(){
+    if(!bottomNav) return;
+    var vv=window.visualViewport;
+    if(vv){
+      var off=window.innerHeight - vv.height - vv.offsetTop;
+      bottomNav.style.bottom=(off>0.5?off:0)+"px";
+    } else {
+      bottomNav.style.bottom="0px";
+    }
+  }
+  if(window.visualViewport){
+    window.visualViewport.addEventListener("resize", pinNav);
+    window.visualViewport.addEventListener("scroll", pinNav);
+  }
+  window.addEventListener("resize", pinNav);
+  window.addEventListener("orientationchange", pinNav);
+  pinNav();
+
   tick(); setInterval(tick, 1000);
   renderAll();
   loadMirror();
