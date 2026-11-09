@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Career OS 28</title>
-<meta name="description" content="就活の今日を整える、ホーム画面専用の軽量ダッシュボード">
+<meta name="description" content="就活の今日を整える、暗号化ミラー">
 <meta name="theme-color" content="#0b0f14">
 <meta name="color-scheme" content="dark">
 <meta name="mobile-web-app-capable" content="yes">
@@ -15,644 +15,662 @@
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%230b0f14'/%3E%3Ctext x='90' y='118' font-size='76' font-family='sans-serif' font-weight='700' fill='%235eead4' text-anchor='middle'%3E28%3C/text%3E%3C/svg%3E">
 <link id="manifestLink" rel="manifest" href='data:application/manifest+json,{"name":"Career OS 28","short_name":"Career OS 28","display":"standalone","start_url":".","background_color":"%230b0f14","theme_color":"%230b0f14","lang":"ja"}'>
 <style>
-  html,body{margin:0;padding:0;background:#0b0f14;color:#eef2f5;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+  :root{--bg:#0b0f14;--card:#12181f;--card2:#131a22;--line:#1f2935;--line2:#26323f;--text:#eef2f5;--muted:#8b98a5;--muted2:#7d8b99;--teal:#2dd4bf;--teal-light:#5eead4;--rose:#fb7185;--amber:#fbbf24;--blue:#60a5fa;--green:#34d399;--purple:#c084fc;--red:#fb7185}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
   body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
-  h1,h2,h3,p,ul,ol,figure{margin:0;padding:0}
-  ul{list-style:none}
-  button,input,select,textarea{font:inherit;color:inherit}
-  button{cursor:pointer}
+  h1,h2,h3,p,ul,ol,figure{margin:0;padding:0} ul{list-style:none}
+  button,input,textarea{font:inherit;color:inherit} button{cursor:pointer}
   .wrap{max-width:560px;margin:0 auto;padding:0 18px}
-  /* Top bar */
   .topbar{display:flex;align-items:center;justify-content:space-between;padding:calc(14px + env(safe-area-inset-top)) 18px 6px;max-width:560px;margin:0 auto}
-  .brand{display:flex;align-items:center;gap:10px}
-  .brand-mark{width:34px;height:34px;border-radius:10px;background:#12211f;border:1px solid #1f3a36;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#5eead4;letter-spacing:.02em}
-  .brand-name{font-size:14px;font-weight:700;letter-spacing:.04em}
-  .brand-sub{font-size:11px;color:#8b98a5;margin-top:1px}
-  .icon-btn{width:40px;height:40px;border-radius:999px;border:1px solid #232d38;background:#131a22;display:flex;align-items:center;justify-content:center;position:relative}
+  .brand{display:flex;align-items:center;gap:10px}.brand-mark{width:34px;height:34px;border-radius:10px;background:#12211f;border:1px solid #1f3a36;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:var(--teal-light)}
+  .brand-name{font-size:14px;font-weight:700;letter-spacing:.04em}.brand-sub{font-size:11px;color:var(--muted);margin-top:1px}
+  .icon-btn{width:40px;height:40px;border-radius:999px;border:1px solid #232d38;background:var(--card2);display:flex;align-items:center;justify-content:center;position:relative}
   .icon-btn svg{width:19px;height:19px;stroke:#cbd5e1}
-  .badge-dot{position:absolute;top:7px;right:8px;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:#f43f5e;color:#fff;font-size:10px;font-weight:800;display:none;align-items:center;justify-content:center;border:2px solid #0b0f14}
+  .badge-dot{position:absolute;top:7px;right:8px;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:#f43f5e;color:#fff;font-size:10px;font-weight:800;display:none;align-items:center;justify-content:center;border:2px solid var(--bg)}
   .badge-dot.show{display:flex}
-  /* Hero */
-  .hero{padding:22px 0 6px}
-  .hero-date{font-size:13px;color:#5eead4;font-weight:700;letter-spacing:.14em}
-  .hero-day{font-size:44px;line-height:1.08;font-weight:800;letter-spacing:-.02em;margin-top:8px}
-  .hero-greet{font-size:15px;color:#aebac6;margin-top:10px;line-height:1.6}
-  .hero-clock{display:flex;align-items:baseline;gap:10px;margin-top:16px}
-  .clock-time{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.01em}
-  .clock-sec{font-size:13px;color:#7d8b99;font-variant-numeric:tabular-nums}
+  .view{display:none}.view.active{display:block}
+  .hero{padding:20px 0 6px}.hero-date{font-size:13px;color:var(--teal-light);font-weight:700;letter-spacing:.14em}
+  .hero-day{font-size:42px;line-height:1.08;font-weight:800;letter-spacing:-.02em;margin-top:8px}
+  .hero-greet{font-size:14.5px;color:#aebac6;margin-top:10px;line-height:1.65}
+  .hero-clock{display:flex;align-items:baseline;gap:10px;margin-top:14px}
+  .clock-time{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}.clock-sec{font-size:13px;color:var(--muted2);font-variant-numeric:tabular-nums}
+  .sync-line{font-size:11.5px;color:var(--muted2);margin-top:10px}
   .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:18px}
-  .stat{background:#131a22;border:1px solid #202a35;border-radius:16px;padding:14px 12px}
-  .stat-num{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
-  .stat-num.red{color:#fb7185}.stat-num.teal{color:#5eead4}.stat-num.amber{color:#fbbf24}
-  .stat-label{font-size:11px;color:#8b98a5;margin-top:3px;line-height:1.4;word-break:keep-all}
-  .progress{height:6px;background:#1c2632;border-radius:999px;margin-top:16px;overflow:hidden}
-  .progress-bar{height:100%;background:#2dd4bf;border-radius:999px;transition:width .4s ease;width:0%}
-  .progress-note{font-size:11px;color:#7d8b99;margin-top:7px}
-  /* Sections */
-  .section{margin-top:26px}
-  .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .stat{background:var(--card2);border:1px solid #202a35;border-radius:16px;padding:14px 12px}
+  .stat-num{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}.stat-num.red{color:var(--rose)}.stat-num.teal{color:var(--teal-light)}.stat-num.amber{color:var(--amber)}
+  .stat-label{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4}
+  .section{margin-top:26px}.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
   .section-title{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:800}
-  .section-title .dot{width:8px;height:8px;border-radius:999px}
-  .dot-teal{background:#2dd4bf}.dot-rose{background:#fb7185}.dot-amber{background:#fbbf24}.dot-slate{background:#94a3b8}
-  .add-mini{border:1px solid #26323f;background:#131a22;color:#cbd5e1;font-size:12px;font-weight:700;padding:7px 12px;border-radius:999px}
-  .card{background:#12181f;border:1px solid #1f2935;border-radius:18px;overflow:hidden}
-  .row-item{display:flex;gap:12px;padding:15px 16px;border-bottom:1px solid #1b242f;align-items:flex-start}
-  .row-item:last-child{border-bottom:none}
-  .time-chip{flex-shrink:0;min-width:52px;text-align:center;background:#0e2a27;color:#5eead4;border:1px solid #17423d;font-weight:800;font-size:13px;padding:7px 6px;border-radius:10px;font-variant-numeric:tabular-nums}
-  .row-main{flex:1;min-width:0}
-  .row-title{font-size:14.5px;font-weight:700;line-height:1.45;word-break:break-word}
-  .row-meta{font-size:12px;color:#8b98a5;margin-top:3px;line-height:1.5;word-break:break-word}
+  .section-title .dot{width:8px;height:8px;border-radius:999px;flex-shrink:0}
+  .dot-teal{background:var(--teal)}.dot-rose{background:var(--rose)}.dot-amber{background:var(--amber)}.dot-slate{background:#94a3b8}.dot-blue{background:var(--blue)}.dot-purple{background:var(--purple)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .row-item{display:flex;gap:12px;padding:15px 16px;border-bottom:1px solid #1b242f;align-items:flex-start}.row-item:last-child{border-bottom:none}
+  .time-chip{flex-shrink:0;min-width:52px;text-align:center;background:#0e2a27;color:var(--teal-light);border:1px solid #17423d;font-weight:800;font-size:13px;padding:7px 6px;border-radius:10px;font-variant-numeric:tabular-nums}
+  .date-chip{flex-shrink:0;min-width:52px;text-align:center;background:#16202b;color:#cbd5e1;border:1px solid var(--line2);font-weight:700;font-size:11.5px;padding:7px 6px;border-radius:10px;line-height:1.4}
+  .row-main{flex:1;min-width:0}.row-title{font-size:14.5px;font-weight:700;line-height:1.45;word-break:break-word}
+  .row-meta{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.55;word-break:break-word;white-space:pre-wrap}
   .remain{flex-shrink:0;font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;white-space:nowrap}
-  .remain-red{background:#3b1220;color:#fda4af;border:1px solid #5b1a2e}
-  .remain-amber{background:#33270d;color:#fcd34d;border:1px solid #57450f}
-  .remain-teal{background:#0e2a27;color:#5eead4;border:1px solid #17423d}
-  .remain-slate{background:#1c2632;color:#aebac6;border:1px solid #2a3746}
-  .del-btn{flex-shrink:0;background:none;border:none;color:#5b6b7a;font-size:17px;line-height:1;padding:2px 2px}
-  .empty{padding:22px 16px;text-align:center}
-  .empty-title{font-size:13.5px;font-weight:700;color:#cbd5e1}
-  .empty-text{font-size:12px;color:#7d8b99;margin-top:5px;line-height:1.6}
-  /* Todo */
-  .todo-item{display:flex;gap:11px;padding:13px 16px;border-bottom:1px solid #1b242f;align-items:flex-start}
-  .todo-item:last-child{border-bottom:none}
+  .remain-red{background:#3b1220;color:#fda4af;border:1px solid #5b1a2e}.remain-amber{background:#33270d;color:#fcd34d;border:1px solid #57450f}.remain-teal{background:#0e2a27;color:var(--teal-light);border:1px solid #17423d}.remain-slate{background:#1c2632;color:#aebac6;border:1px solid #2a3746}
+  .type-chip{flex-shrink:0;font-size:10.5px;font-weight:800;padding:4px 8px;border-radius:999px;background:#1c2632;color:#aebac6;border:1px solid #2a3746}
+  .empty{padding:24px 16px;text-align:center}.empty-title{font-size:13.5px;font-weight:700;color:#cbd5e1}.empty-text{font-size:12px;color:var(--muted2);margin-top:5px;line-height:1.65}
+  .todo-item{display:flex;gap:11px;padding:13px 16px;border-bottom:1px solid #1b242f;align-items:flex-start}.todo-item:last-child{border-bottom:none}
   .todo-check{flex-shrink:0;width:23px;height:23px;border-radius:8px;border:1.6px solid #334155;background:#0f151c;display:flex;align-items:center;justify-content:center;margin-top:1px;padding:0}
   .todo-check svg{width:13px;height:13px;stroke:#0b0f14;stroke-width:3.2;opacity:0}
-  .todo-check.done{background:#2dd4bf;border-color:#2dd4bf}
-  .todo-check.done svg{opacity:1}
-  .todo-text{flex:1;font-size:14.5px;line-height:1.5;word-break:break-word;padding-top:2px}
-  .todo-text.done{color:#64748b;text-decoration:line-through}
-  .inline-add{display:flex;gap:8px;padding:12px;border-top:1px solid #1b242f;background:#0f151c}
-  .inline-add input{flex:1;min-width:0;background:#131a22;border:1px solid #26323f;border-radius:11px;padding:11px 12px;font-size:14px;outline:none}
-  .inline-add input:focus{border-color:#2dd4bf}
-  .inline-add button{background:#2dd4bf;color:#062a26;border:none;font-weight:800;font-size:13px;padding:0 16px;border-radius:11px}
-  /* Memo */
-  .memo-card{background:#12181f;border:1px solid #1f2935;border-radius:18px;padding:14px}
-  .memo-card textarea{width:100%;box-sizing:border-box;background:#0f151c;border:1px solid #232e3a;border-radius:12px;padding:12px;font-size:14px;line-height:1.65;min-height:88px;resize:vertical;outline:none}
-  .memo-card textarea:focus{border-color:#2dd4bf}
-  .memo-foot{display:flex;justify-content:space-between;align-items:center;margin-top:9px}
-  .memo-saved{font-size:11px;color:#5eead4}
-  .memo-hint{font-size:11px;color:#64748b}
-  /* Install guide */
+  .todo-check.done{background:var(--teal);border-color:var(--teal)}.todo-check.done svg{opacity:1}
+  .todo-text{flex:1;font-size:14.5px;line-height:1.5;word-break:break-word;padding-top:2px}.todo-text.done{color:#64748b;text-decoration:line-through}
+  /* Registration / status */
+  .reg-card{background:linear-gradient(180deg,#12211f,#10161d);border:1px solid #1f3a36;border-radius:20px;padding:20px 18px;margin-top:22px}
+  .reg-card h2{font-size:18px;font-weight:800;line-height:1.4}
+  .reg-card p{font-size:13px;color:#aebac6;line-height:1.7;margin-top:9px}
+  .btn-primary{border:none;background:var(--teal);color:#062a26;border-radius:12px;padding:14px;font-weight:800;font-size:14.5px;width:100%}
+  .btn-ghost{border:1px solid #2a3746;background:none;border-radius:12px;padding:13px;font-weight:700;font-size:14px;color:#cbd5e1;width:100%}
+  .btn-danger{width:100%;border:1px solid #5b1a2e;background:#2a0f18;color:#fda4af;border-radius:12px;padding:12px;font-weight:700;font-size:13.5px}
+  .code-box{margin-top:14px;background:#0a0f13;border:1px solid var(--line2);border-radius:14px;padding:14px}
+  .code-label{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--teal-light)}
+  .code-text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.65;word-break:break-all;margin-top:8px;color:#e2e8f0}
+  .status-pill{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;padding:5px 10px;border-radius:999px}
+  .status-ok{background:#0e2a27;color:var(--teal-light);border:1px solid #17423d}
+  .status-wait{background:#1c2632;color:#aebac6;border:1px solid #2a3746}
+  /* Companies */
+  .company-item{display:flex;gap:12px;padding:16px;border-bottom:1px solid #1b242f;align-items:flex-start;width:100%;background:none;border-left:none;border-right:none;border-top:none;text-align:left}
+  .company-item:last-child{border-bottom:none}
+  .company-avatar{flex-shrink:0;width:42px;height:42px;border-radius:12px;background:#0e2a27;border:1px solid #17423d;color:var(--teal-light);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px}
+  .status-chip{flex-shrink:0;font-size:10.5px;font-weight:800;padding:4px 8px;border-radius:999px;background:#16202b;color:#aebac6;border:1px solid var(--line2);white-space:nowrap}
+  .back-btn{background:none;border:none;color:var(--teal-light);font-size:13.5px;font-weight:700;padding:6px 0;display:flex;align-items:center;gap:4px}
+  .report-summary{background:#0e2a27;border:1px solid #17423d;border-radius:16px;padding:16px;font-size:14px;line-height:1.8;white-space:pre-wrap;word-break:break-word}
+  .toc{padding:8px 0}
+  .toc a{display:flex;gap:10px;padding:11px 16px;color:#cbd5e1;text-decoration:none;font-size:13.5px;font-weight:600;border-bottom:1px solid #1b242f}
+  .toc a:last-child{border-bottom:none}
+  .toc-num{color:var(--teal-light);font-weight:800;flex-shrink:0}
+  .chapter{padding:18px 16px;border-bottom:1px solid #1b242f}.chapter:last-child{border-bottom:none}
+  .chapter h3{font-size:15.5px;font-weight:800;line-height:1.5;margin-bottom:10px}
+  .chapter-body{font-size:14px;line-height:1.85;color:#dbe4ec;white-space:pre-wrap;word-break:break-word}
+  /* Notifications */
+  .notif-item{display:flex;gap:12px;padding:15px 16px;border-bottom:1px solid #1b242f;align-items:flex-start}.notif-item:last-child{border-bottom:none}
+  .notif-bar{flex-shrink:0;width:4px;align-self:stretch;border-radius:999px}
+  .nb-blue{background:var(--blue)}.nb-green{background:var(--green)}.nb-purple{background:var(--purple)}.nb-red{background:#f43f5e}.nb-slate{background:#64748b}
+  .notif-cat{font-size:10.5px;font-weight:800;letter-spacing:.06em}
+  .nc-blue{color:var(--blue)}.nc-green{color:var(--green)}.nc-purple{color:var(--purple)}.nc-red{color:var(--rose)}.nc-slate{color:var(--muted)}
+  .filter-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .filter-btn{border:1px solid var(--line2);background:var(--card2);color:#aebac6;font-size:12px;font-weight:700;padding:8px 13px;border-radius:999px}
+  .filter-btn.sel{border-color:var(--teal);color:var(--teal-light);background:#0e2a27}
+  /* Settings */
+  .setting-block{margin-top:22px}
+  .setting-block h3{font-size:14.5px;font-weight:800;margin-bottom:8px}
+  .setting-block p{font-size:12px;color:var(--muted);line-height:1.65}
+  /* Guide */
   .guide{background:#10161d;border:1px dashed #2a3746;border-radius:18px;padding:16px;margin-top:26px}
   .guide h3{font-size:13.5px;font-weight:800}
   .guide ol{list-style:none;margin-top:10px;display:grid;gap:8px}
   .guide li{display:flex;gap:10px;font-size:12.5px;color:#aebac6;line-height:1.55}
-  .guide .step-num{flex-shrink:0;width:20px;height:20px;border-radius:999px;background:#1c2632;color:#5eead4;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .guide .step-num{flex-shrink:0;width:20px;height:20px;border-radius:999px;background:#1c2632;color:var(--teal-light);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
   .guide p{font-size:11.5px;color:#64748b;margin-top:11px;line-height:1.6}
   .foot-note{text-align:center;font-size:11px;color:#52606e;margin:26px 0 6px;line-height:1.7}
+  .page-head{padding:20px 0 4px}.page-head h1{font-size:24px;font-weight:800}.page-head p{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.6}
   /* Bottom nav */
-  .bottom-nav{position:fixed;left:0;right:0;bottom:0;background:rgba(11,15,20,.92);backdrop-filter:blur(14px);border-top:1px solid #1c2632;padding-bottom:env(safe-area-inset-bottom);z-index:40}
-  .bottom-nav-inner{max-width:560px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;padding:8px 22px 10px}
-  .nav-btn{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:3px;color:#7d8b99;font-size:10.5px;font-weight:700;padding:4px 10px}
-  .nav-btn svg{width:21px;height:21px;stroke:currentColor}
-  .nav-btn.active{color:#5eead4}
-  .fab{width:54px;height:54px;border-radius:999px;background:#2dd4bf;border:none;color:#062a26;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(45,212,191,.28);transform:translateY(-8px)}
-  .fab svg{width:24px;height:24px;stroke:#062a26;stroke-width:2.4}
-  /* Sheet / modal */
-  .overlay{position:fixed;inset:0;background:rgba(3,6,9,.66);backdrop-filter:blur(3px);z-index:60;display:none;align-items:flex-end;justify-content:center}
-  .overlay.open{display:flex}
-  .sheet{background:#131a22;border:1px solid #26323f;border-radius:22px 22px 0 0;width:100%;max-width:560px;padding:20px 18px calc(20px + env(safe-area-inset-bottom));max-height:88vh;overflow-y:auto}
-  .sheet h3{font-size:17px;font-weight:800}
-  .sheet-sub{font-size:12px;color:#8b98a5;margin-top:5px;line-height:1.6}
-  .seg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:16px}
-  .seg button{border:1px solid #26323f;background:#0f151c;border-radius:11px;padding:10px 4px;font-size:13px;font-weight:700;color:#aebac6}
-  .seg button.sel{border-color:#2dd4bf;color:#5eead4;background:#0e2a27}
-  .field{margin-top:13px}
-  .field label{display:block;font-size:12px;font-weight:700;color:#aebac6;margin-bottom:6px}
-  .field input,.field select{width:100%;box-sizing:border-box;background:#0f151c;border:1px solid #26323f;border-radius:11px;padding:12px;font-size:14.5px;outline:none}
-  .field input:focus{border-color:#2dd4bf}
-  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-  .sheet-actions{display:grid;grid-template-columns:1fr 1.6fr;gap:9px;margin-top:18px}
-  .btn-ghost{border:1px solid #2a3746;background:none;border-radius:12px;padding:13px;font-weight:700;font-size:14px;color:#cbd5e1}
-  .btn-primary{border:none;background:#2dd4bf;color:#062a26;border-radius:12px;padding:13px;font-weight:800;font-size:14px}
-  .btn-danger{width:100%;margin-top:12px;border:1px solid #5b1a2e;background:#2a0f18;color:#fda4af;border-radius:12px;padding:12px;font-weight:700;font-size:13.5px}
-  .toast{position:fixed;left:50%;transform:translateX(-50%) translateY(16px);bottom:calc(104px + env(safe-area-inset-bottom));background:#e6fffa;color:#063f38;font-size:13px;font-weight:800;padding:11px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:all .25s ease;z-index:80;box-shadow:0 10px 30px rgba(0,0,0,.4);white-space:nowrap}
+  .bottom-nav{position:fixed;left:0;right:0;bottom:0;background:rgba(11,15,20,.94);backdrop-filter:blur(14px);border-top:1px solid #1c2632;padding-bottom:env(safe-area-inset-bottom);z-index:40}
+  .bottom-nav-inner{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);padding:8px 6px 10px}
+  .nav-btn{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:3px;color:#7d8b99;font-size:10px;font-weight:700;padding:4px 2px;position:relative}
+  .nav-btn svg{width:20px;height:20px;stroke:currentColor}
+  .nav-btn.active{color:var(--teal-light)}
+  .nav-badge{position:absolute;top:0;right:calc(50% - 20px);min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#f43f5e;color:#fff;font-size:9.5px;font-weight:800;display:none;align-items:center;justify-content:center}
+  .nav-badge.show{display:flex}
+  .toast{position:fixed;left:50%;transform:translateX(-50%) translateY(16px);bottom:calc(104px + env(safe-area-inset-bottom));background:#e6fffa;color:#063f38;font-size:13px;font-weight:800;padding:11px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:all .25s ease;z-index:80;box-shadow:0 10px 30px rgba(0,0,0,.4);white-space:nowrap;max-width:92vw}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-  body.locked .topbar,body.locked main,body.locked .bottom-nav,body.locked .overlay,body.locked .toast{visibility:hidden !important}
-  /* Lock screen */
-  .lock-screen{position:fixed;inset:0;background:#0b0f14;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px 20px calc(24px + env(safe-area-inset-bottom));box-sizing:border-box}
-  .lock-screen.hidden{display:none}
-  .lock-box{width:100%;max-width:360px;text-align:center}
-  .lock-mark{width:62px;height:62px;border-radius:18px;background:#12211f;border:1px solid #1f3a36;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;color:#5eead4;margin:0 auto}
-  .lock-box h2{font-size:21px;font-weight:800;margin-top:18px}
-  .lock-box .lock-sub{font-size:13px;color:#8b98a5;margin-top:8px;line-height:1.65}
-  .lock-box form{margin-top:20px;text-align:left}
-  .lock-box input{width:100%;box-sizing:border-box;background:#131a22;border:1px solid #26323f;border-radius:12px;padding:14px;font-size:16px;outline:none;text-align:center;letter-spacing:.08em}
-  .lock-box input:focus{border-color:#2dd4bf}
-  .lock-box .lock-confirm{margin-top:9px}
-  .lock-btn{width:100%;margin-top:14px;border:none;background:#2dd4bf;color:#062a26;border-radius:12px;padding:14px;font-weight:800;font-size:15px}
-  .lock-error{font-size:12.5px;color:#fb7185;margin-top:10px;min-height:18px;text-align:center;font-weight:700}
-  .lock-note{font-size:11px;color:#5b6b7a;margin-top:16px;line-height:1.7}
-  @media (min-width:480px){.hero-day{font-size:50px}}
-  @media (prefers-reduced-motion:reduce){.progress-bar,.toast{transition:none}}
+  @media (min-width:480px){.hero-day{font-size:48px}}
+  @media (prefers-reduced-motion:reduce){.toast{transition:none}}
 </style>
 </head>
-<body class="locked">
-
-<!-- Lock screen: shown before the app until unlocked -->
-<div class="lock-screen" id="lockScreen">
-  <div class="lock-box">
-    <div class="lock-mark">28</div>
-    <h2 id="lockTitle">パスワードを設定</h2>
-    <p class="lock-sub" id="lockSub">この端末で使うパスワードを決めてください。次回から、開くたびに入力が必要になります。</p>
-    <form id="lockForm">
-      <input type="password" id="lockPw" placeholder="パスワード（4文字以上）" autocomplete="new-password" aria-label="パスワード">
-      <input type="password" id="lockPw2" class="lock-confirm" placeholder="もう一度入力（確認）" autocomplete="new-password" aria-label="パスワード確認">
-      <button type="submit" class="lock-btn" id="lockBtn">設定してはじめる</button>
-      <div class="lock-error" id="lockError"></div>
-    </form>
-    <p class="lock-note">パスワードはこの端末の中にだけ、ハッシュ化して保存されます。忘れた場合はブラウザのサイトデータを消すとリセットできますが、保存した予定・Todo・メモも一緒に消えます。</p>
-  </div>
-</div>
+<body>
 
 <header class="topbar">
   <div class="brand">
     <div class="brand-mark">28</div>
     <div>
-      <div class="brand-name" id="brandName">Career OS 28</div>
-      <div class="brand-sub">ホーム画面用 ・ 今日ダッシュボード</div>
+      <div class="brand-name">Career OS 28</div>
+      <div class="brand-sub">暗号化ミラー ・ 閲覧用</div>
     </div>
   </div>
-  <button class="icon-btn" id="bellBtn" aria-label="締切アラート">
+  <button class="icon-btn" id="bellBtn" aria-label="通知">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
     <span class="badge-dot" id="bellBadge">0</span>
   </button>
 </header>
 
 <main class="wrap">
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-date" id="heroDate">—</div>
-    <h1 class="hero-day" id="heroDay">今日</h1>
-    <p class="hero-greet" id="heroGreet">今日やることを、ここに集めましょう。</p>
-    <div class="hero-clock">
-      <span class="clock-time" id="clockTime">--:--</span>
-      <span class="clock-sec" id="clockSec">--</span>
-    </div>
-    <div class="stats">
-      <div class="stat"><div class="stat-num teal" id="statSchedule">0</div><div class="stat-label">今日の予定</div></div>
-      <div class="stat"><div class="stat-num red" id="statDeadline">0</div><div class="stat-label">締切（48h以内）</div></div>
-      <div class="stat"><div class="stat-num amber" id="statTodo">0</div><div class="stat-label">未完了のTodo</div></div>
-    </div>
-    <div class="progress"><div class="progress-bar" id="todoProgress"></div></div>
-    <div class="progress-note" id="todoProgressNote">Todoの進み具合がここに出ます</div>
-  </section>
 
-  <!-- Schedule -->
-  <section class="section" id="secSchedule">
-    <div class="section-head">
-      <h2 class="section-title"><span class="dot dot-teal"></span>今日の予定</h2>
-      <button class="add-mini" data-add="schedule">＋ 追加</button>
-    </div>
-    <div class="card"><div id="scheduleList"></div></div>
-  </section>
-
-  <!-- Deadlines -->
-  <section class="section" id="secDeadline">
-    <div class="section-head">
-      <h2 class="section-title"><span class="dot dot-rose"></span>締切</h2>
-      <button class="add-mini" data-add="deadline">＋ 追加</button>
-    </div>
-    <div class="card"><div id="deadlineList"></div></div>
-  </section>
-
-  <!-- Todo -->
-  <section class="section">
-    <div class="section-head">
-      <h2 class="section-title"><span class="dot dot-amber"></span>今日のTodo</h2>
-      <span style="font-size:12px;color:#7d8b99" id="todoCountLabel"></span>
-    </div>
-    <div class="card">
-      <div id="todoList"></div>
-      <form class="inline-add" id="todoForm">
-        <input type="text" id="todoInput" placeholder="やることを追加…" autocomplete="off" maxlength="120">
-        <button type="submit">追加</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Memo -->
-  <section class="section">
-    <div class="section-head">
-      <h2 class="section-title"><span class="dot dot-slate"></span>クイックメモ</h2>
-    </div>
-    <div class="memo-card">
-      <textarea id="memoArea" placeholder="思いついたことをそのまま書いておく場所。入力すると自動で保存されます。"></textarea>
-      <div class="memo-foot">
-        <span class="memo-hint">この端末の中だけに保存されます</span>
-        <span class="memo-saved" id="memoSaved"></span>
+  <!-- ===== HOME ===== -->
+  <div class="view active" id="view-home">
+    <section class="hero">
+      <div class="hero-date" id="heroDate">—</div>
+      <h1 class="hero-day" id="heroDay">今日</h1>
+      <p class="hero-greet" id="heroGreet">今日の予定と締切を、ここで確認できます。</p>
+      <div class="hero-clock"><span class="clock-time" id="clockTime">--:--</span><span class="clock-sec" id="clockSec">--</span></div>
+      <div class="sync-line" id="syncLine">状態を確認しています…</div>
+      <div class="stats">
+        <div class="stat"><div class="stat-num teal" id="statSchedule">0</div><div class="stat-label">今日の予定</div></div>
+        <div class="stat"><div class="stat-num red" id="statDeadline">0</div><div class="stat-label">締切（48h以内・期限切れ）</div></div>
+        <div class="stat"><div class="stat-num amber" id="statTodo">0</div><div class="stat-label">未完了のTodo</div></div>
       </div>
+    </section>
+
+    <!-- Registration prompt (shown when no device key) -->
+    <section class="reg-card" id="regCard" style="display:none">
+      <h2>この端末を登録すると、あなたのデータが表示されます</h2>
+      <p>このページには、あなたのデータを暗号化したものだけが置かれます。端末で鍵を作り、表示される登録コードを Muse に送ると、この端末だけで中身を開けるようになります。パスワード入力は不要で、次回からは開くだけでそのまま表示されます。</p>
+      <div style="margin-top:16px"><button class="btn-primary" id="registerBtn">端末を登録する</button></div>
+      <div id="regCodeArea" style="display:none">
+        <div class="code-box">
+          <div class="code-label">登録コード（公開鍵）</div>
+          <div class="code-text" id="regCodeText"></div>
+        </div>
+        <div style="margin-top:10px"><button class="btn-ghost" id="copyCodeBtn">登録コードをコピー</button></div>
+        <p style="margin-top:12px;color:#5eead4;font-weight:700">このコードを Muse に送ってください。コードを受け取った Muse が、あなたのデータをこの端末向けに暗号化して配置します。</p>
+      </div>
+    </section>
+
+    <!-- Unsynced notice (key exists but no decryptable data) -->
+    <section class="reg-card" id="unsyncCard" style="display:none">
+      <h2>データ未同期</h2>
+      <p id="unsyncText">暗号化データがまだ配置されていないか、この端末の鍵では開けませんでした。登録コードを Muse に送ると、データが配置されます。すでに送った場合は、配置が完了するまで少し待ってから開き直してください。</p>
+      <div style="margin-top:14px"><button class="btn-ghost" id="retryBtn">もう一度読み込む</button></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2 class="section-title"><span class="dot dot-teal"></span>今日の予定</h2></div>
+      <div class="card"><div id="todayEvents"></div></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2 class="section-title"><span class="dot dot-rose"></span>締切</h2></div>
+      <div class="card"><div id="homeDeadlines"></div></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2 class="section-title"><span class="dot dot-amber"></span>Todo</h2><span style="font-size:12px;color:#7d8b99" id="todoCountLabel"></span></div>
+      <div class="card"><div id="homeTasks"></div></div>
+    </section>
+
+    <section class="guide">
+      <h3>ホーム画面に追加する方法（iPhone）</h3>
+      <ol>
+        <li><span class="step-num">1</span><span>このページを <strong style="color:#e2e8f0">Safari</strong> で開く</span></li>
+        <li><span class="step-num">2</span><span>画面下の <strong style="color:#e2e8f0">共有ボタン</strong>（□に↑のマーク）をタップ</span></li>
+        <li><span class="step-num">3</span><span>「<strong style="color:#e2e8f0">ホーム画面に追加</strong>」を選ぶ</span></li>
+        <li><span class="step-num">4</span><span>名前が「Career OS 28」になっているのを確認して「追加」</span></li>
+      </ol>
+      <p>追加後はアイコンから全画面で開けます。端末の鍵はこの端末のブラウザに保存されるため、追加したアイコンから開いても登録はそのまま使えます。ブラウザのサイトデータを消すと鍵も消え、再登録が必要になります。</p>
+    </section>
+    <p class="foot-note">Career OS 28（暗号化ミラー）<br>表示される内容は、本体から書き出されたデータの閲覧用コピーです。</p>
+  </div>
+
+  <!-- ===== COMPANIES ===== -->
+  <div class="view" id="view-companies">
+    <div class="page-head"><h1>企業</h1><p>タップすると、企業研究レポート（要約→目次→全章）を1枚で表示します。</p></div>
+    <section class="section" style="margin-top:18px"><div class="card"><div id="companyList"></div></div></section>
+  </div>
+
+  <!-- ===== COMPANY DETAIL ===== -->
+  <div class="view" id="view-company">
+    <div style="padding-top:14px"><button class="back-btn" id="companyBack">← 企業一覧に戻る</button></div>
+    <div id="companyDetail"></div>
+  </div>
+
+  <!-- ===== SCHEDULE ===== -->
+  <div class="view" id="view-schedule">
+    <div class="page-head"><h1>予定・締切</h1><p>本体から書き出された予定と締切の一覧です。</p></div>
+    <section class="section" style="margin-top:18px">
+      <div class="section-head"><h2 class="section-title"><span class="dot dot-teal"></span>予定</h2></div>
+      <div class="card"><div id="allEvents"></div></div>
+    </section>
+    <section class="section">
+      <div class="section-head"><h2 class="section-title"><span class="dot dot-rose"></span>締切</h2></div>
+      <div class="card"><div id="allDeadlines"></div></div>
+    </section>
+  </div>
+
+  <!-- ===== NOTIFICATIONS ===== -->
+  <div class="view" id="view-notifications">
+    <div class="page-head"><h1>通知</h1><p>青：就活関連メール ／ 緑：スケジュール・リマインド ／ 紫：アプリの改善・更新 ／ 赤：重要な締切・緊急対応</p></div>
+    <div class="filter-row" id="notifFilters" style="margin-top:16px">
+      <button class="filter-btn sel" data-filter="all">すべて</button>
+      <button class="filter-btn" data-filter="mail">メール</button>
+      <button class="filter-btn" data-filter="schedule">スケジュール</button>
+      <button class="filter-btn" data-filter="update">改善・更新</button>
+      <button class="filter-btn" data-filter="urgent">重要・締切</button>
     </div>
-  </section>
+    <div class="card"><div id="notifList"></div></div>
+  </div>
 
-  <!-- Install guide -->
-  <section class="guide">
-    <h3>ホーム画面に追加する方法（iPhone）</h3>
-    <ol>
-      <li><span class="step-num">1</span><span>このページを <strong style="color:#e2e8f0">Safari</strong> で開く</span></li>
-      <li><span class="step-num">2</span><span>画面下の <strong style="color:#e2e8f0">共有ボタン</strong>（□に↑のマーク）をタップ</span></li>
-      <li><span class="step-num">3</span><span>「<strong style="color:#e2e8f0">ホーム画面に追加</strong>」を選ぶ</span></li>
-      <li><span class="step-num">4</span><span>名前が「Career OS 28」になっているのを確認して「追加」</span></li>
-    </ol>
-    <p>追加後はアイコンから全画面（アドレスバーなし）で開けます。入力した予定・締切・Todo・メモはこの端末のブラウザに保存され、次に開いたときも残ります。</p>
-  </section>
+  <!-- ===== SETTINGS ===== -->
+  <div class="view" id="view-settings">
+    <div class="page-head"><h1>設定</h1><p>端末の登録状態と鍵を管理します。ログインやパスワード入力はありません。</p></div>
 
-  <p class="foot-note">Career OS 28（ホーム画面用）<br>このページは単体で動く軽量版です。本体の非公開アプリとは別物で、データの同期はありません。</p>
+    <div class="setting-block">
+      <h3>登録状態</h3>
+      <p id="settingsStatus"><span class="status-pill status-wait">確認中…</span></p>
+      <p id="settingsSync" style="margin-top:8px"></p>
+    </div>
+
+    <div class="setting-block" id="settingsCodeBlock" style="display:none">
+      <h3>登録コード（公開鍵）</h3>
+      <p>このコードは公開しても安全な鍵です。新しい端末で使うときや、データの再発行を頼むときに Muse へ送ってください。</p>
+      <div class="code-box"><div class="code-label">登録コード</div><div class="code-text" id="settingsCodeText"></div></div>
+      <div style="margin-top:10px"><button class="btn-ghost" id="copyCodeBtn2">登録コードをコピー</button></div>
+    </div>
+
+    <div class="setting-block" id="settingsRegisterBlock" style="display:none">
+      <h3>端末の登録</h3>
+      <p>まだこの端末の鍵がありません。登録すると登録コードが表示されます。</p>
+      <div style="margin-top:10px"><button class="btn-primary" id="registerBtn2">端末を登録する</button></div>
+    </div>
+
+    <div class="setting-block">
+      <h3>データを再読み込み</h3>
+      <p>暗号化データをもう一度取得して復号します。Muse がデータを更新したあとに使ってください。</p>
+      <div style="margin-top:10px"><button class="btn-ghost" id="reloadBtn">再読み込みする</button></div>
+    </div>
+
+    <div class="setting-block">
+      <h3>端末キーのリセット</h3>
+      <p>鍵を消すと、この端末ではデータを開けなくなります。再び表示するには、新しい登録コードを Muse に送って<strong style="color:#fda4af">データの再発行</strong>を受ける必要があります。</p>
+      <div style="margin-top:10px"><button class="btn-danger" id="resetKeyBtn">端末キーをリセットする</button></div>
+    </div>
+  </div>
+
 </main>
 
-<!-- Bottom nav -->
 <nav class="bottom-nav">
   <div class="bottom-nav-inner">
-    <button class="nav-btn active" id="navToday">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-      今日
-    </button>
-    <button class="fab" id="fabAdd" aria-label="クイック追加">
-      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-    </button>
-    <button class="nav-btn" id="navSettings">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-      設定
-    </button>
+    <button class="nav-btn active" data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>今日</button>
+    <button class="nav-btn" data-nav="companies"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-4h6v4"/></svg>企業</button>
+    <button class="nav-btn" data-nav="schedule"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>予定</button>
+    <button class="nav-btn" data-nav="notifications"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>通知<span class="nav-badge" id="navNotifBadge">0</span></button>
+    <button class="nav-btn" data-nav="settings"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>設定</button>
   </div>
 </nav>
 
-<!-- Add sheet -->
-<div class="overlay" id="addOverlay">
-  <div class="sheet" role="dialog" aria-modal="true" aria-label="追加">
-    <h3 id="sheetTitle">クイック追加</h3>
-    <p class="sheet-sub">種類を選んで入力するだけ。保存先はこの端末の中だけです。</p>
-    <div class="seg" id="typeSeg">
-      <button type="button" data-type="schedule" class="sel">予定</button>
-      <button type="button" data-type="deadline">締切</button>
-      <button type="button" data-type="todo">Todo</button>
-    </div>
-    <form id="addForm">
-      <div class="field">
-        <label for="fTitle">タイトル</label>
-        <input type="text" id="fTitle" placeholder="例：説明会、ES提出、面接練習" maxlength="120" required>
-      </div>
-      <div class="field-row" id="rowWhen">
-        <div class="field">
-          <label for="fDate">日付</label>
-          <input type="date" id="fDate" required>
-        </div>
-        <div class="field">
-          <label for="fTime">時刻</label>
-          <input type="time" id="fTime" value="12:00">
-        </div>
-      </div>
-      <div class="field" id="fieldPlace">
-        <label for="fPlace">場所・メモ（任意）</label>
-        <input type="text" id="fPlace" placeholder="例：オンライン、大学の教室" maxlength="80">
-      </div>
-      <div class="sheet-actions">
-        <button type="button" class="btn-ghost" id="addCancel">キャンセル</button>
-        <button type="submit" class="btn-primary">保存する</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<!-- Settings sheet -->
-<div class="overlay" id="settingsOverlay">
-  <div class="sheet" role="dialog" aria-modal="true" aria-label="設定">
-    <h3>設定</h3>
-    <p class="sheet-sub">表示名はこの端末の画面上だけに反映されます（ホーム画面のアイコン名は、追加したときに決まります）。</p>
-    <form id="settingsForm">
-      <div class="field">
-        <label for="sName">アプリの表示名</label>
-        <input type="text" id="sName" maxlength="30">
-      </div>
-      <div class="field">
-        <label for="sGreetName">呼びかけ名（任意）</label>
-        <input type="text" id="sGreetName" placeholder="例：けーすけ" maxlength="20">
-      </div>
-      <div class="sheet-actions">
-        <button type="button" class="btn-ghost" id="settingsCancel">閉じる</button>
-        <button type="submit" class="btn-primary">保存する</button>
-      </div>
-    </form>
-    <div style="border-top:1px solid #1f2935;margin-top:20px;padding-top:16px">
-      <h3 style="font-size:14.5px">パスワードを変更</h3>
-      <div class="field">
-        <label for="pwCurrent">現在のパスワード</label>
-        <input type="password" id="pwCurrent" autocomplete="current-password">
-      </div>
-      <div class="field">
-        <label for="pwNew">新しいパスワード（4文字以上）</label>
-        <input type="password" id="pwNew" autocomplete="new-password">
-      </div>
-      <button type="button" class="btn-ghost" id="pwChangeBtn" style="width:100%;margin-top:12px">パスワードを変更する</button>
-      <p style="font-size:11px;color:#5b6b7a;margin-top:9px;line-height:1.6">忘れた場合はブラウザのサイトデータを消すとリセットできますが、端末内のデータも一緒に消えます。</p>
-    </div>
-    <button class="btn-danger" id="resetBtn">この端末のデータをすべて消す</button>
-  </div>
-</div>
-
-<div class="toast" id="toast">保存しました</div>
+<div class="toast" id="toast">コピーしました</div>
 
 <script>
 (function(){
   "use strict";
-  /* ---- Password lock (device-local, hashed, never sent anywhere) ---- */
-  var LOCK_KEY = "career-os-28-lock-v1";
-  function getLock(){ try { var r = localStorage.getItem(LOCK_KEY); return r ? JSON.parse(r) : null; } catch(e){ return null; } }
-  function setLock(rec){ try { localStorage.setItem(LOCK_KEY, JSON.stringify(rec)); } catch(e){} }
-  function makeSalt(){ var a = new Uint8Array(16); if (window.crypto && crypto.getRandomValues) crypto.getRandomValues(a); else for (var i=0;i<16;i++) a[i] = Math.floor(Math.random()*256); return Array.prototype.map.call(a, function(b){ return ("0"+b.toString(16)).slice(-2); }).join(""); }
-  function hashPw(pw, salt){
-    var input = salt + "::" + pw;
-    if (window.crypto && crypto.subtle && crypto.subtle.digest) {
-      return crypto.subtle.digest("SHA-256", new TextEncoder().encode(input)).then(function(buf){
-        return Array.prototype.map.call(new Uint8Array(buf), function(b){ return ("0"+b.toString(16)).slice(-2); }).join("");
-      });
-    }
-    var h1 = 0xdeadbeef, h2 = 0x41c6ce57, s = input + input.split("").reverse().join("");
-    for (var i=0;i<s.length;i++){ var ch = s.charCodeAt(i); h1 = Math.imul(h1 ^ ch, 2654435761); h2 = Math.imul(h2 ^ ch, 1597334677); }
-    h1 = Math.imul(h1 ^ (h1>>>16), 2246822507) ^ Math.imul(h2 ^ (h2>>>13), 3266489909);
-    h2 = Math.imul(h2 ^ (h2>>>16), 2246822507) ^ Math.imul(h1 ^ (h1>>>13), 3266489909);
-    return Promise.resolve((h2>>>0).toString(16) + (h1>>>0).toString(16) + salt.length + input.length);
-  }
-  var lockScreen = document.getElementById("lockScreen");
-  var lockForm = document.getElementById("lockForm");
-  var lockPw = document.getElementById("lockPw");
-  var lockPw2 = document.getElementById("lockPw2");
-  var lockError = document.getElementById("lockError");
-  var existingLock = getLock();
-  var isSetup = !existingLock;
-  if (!isSetup) {
-    document.getElementById("lockTitle").textContent = "ロック中";
-    document.getElementById("lockSub").textContent = "パスワードを入力すると開きます。";
-    document.getElementById("lockBtn").textContent = "開く";
-    lockPw2.style.display = "none";
-    lockPw.setAttribute("autocomplete", "current-password");
-    lockPw.setAttribute("placeholder", "パスワード");
-  }
-  document.body.style.overflow = "hidden";
-  setTimeout(function(){ lockPw.focus(); }, 80);
-  function unlock(){
-    lockScreen.classList.add("hidden");
-    document.body.classList.remove("locked");
-    document.body.style.overflow = "";
-  }
-  lockForm.addEventListener("submit", function(e){
-    e.preventDefault();
-    var pw = lockPw.value || "";
-    lockError.textContent = "";
-    if (isSetup) {
-      if (pw.length < 4) { lockError.textContent = "4文字以上で設定してください。"; return; }
-      if (pw !== lockPw2.value) { lockError.textContent = "確認用と一致しません。"; return; }
-      var salt = makeSalt();
-      hashPw(pw, salt).then(function(h){ setLock({ salt: salt, hash: h }); unlock(); });
-    } else {
-      var rec = getLock();
-      if (!rec) { unlock(); return; }
-      hashPw(pw, rec.salt).then(function(h){
-        if (h === rec.hash) { unlock(); }
-        else { lockError.textContent = "パスワードが違います。"; lockPw.value = ""; lockPw.focus(); }
-      });
-    }
-  });
-  window.__careerLock = { getLock: getLock, setLock: setLock, hashPw: hashPw, makeSalt: makeSalt, lockKey: LOCK_KEY };
+  var KEY_STORE = "career-os-28-device-key-v1";
+  var TASK_OVERRIDES = "career-os-28-mirror-task-overrides-v1";
+  var HKDF_INFO = "career-os-28-mirror-v1";
 
-  var KEY = "career-os-28-home-v1";
-  var state = { schedules: [], deadlines: [], todos: [], memo: "", displayName: "Career OS 28", greetName: "" };
-  try {
-    var raw = localStorage.getItem(KEY);
-    if (raw) { var p = JSON.parse(raw); if (p && typeof p === "object") { state = Object.assign(state, p); } }
-  } catch(e) {}
-  function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} }
-  function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
   function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
   function pad(n){ return (n<10?"0":"")+n; }
-  function todayStr(d){ return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()); }
+  function todayStr(d){ d=d||new Date(); return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()); }
   function fmtDateJP(d){ var w=["日","月","火","水","木","金","土"][d.getDay()]; return d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日（"+w+"）"; }
-
-  var toastTimer = null;
-  function toast(msg){
-    var t = document.getElementById("toast"); t.textContent = msg; t.classList.add("show");
-    clearTimeout(toastTimer); toastTimer = setTimeout(function(){ t.classList.remove("show"); }, 1900);
+  function b64ToBytes(b64){
+    var bin = atob(String(b64).replace(/\s+/g,""));
+    var out = new Uint8Array(bin.length);
+    for (var i=0;i<bin.length;i++) out[i]=bin.charCodeAt(i);
+    return out;
+  }
+  function bytesToB64(buf){
+    var bytes = new Uint8Array(buf); var s="";
+    for (var i=0;i<bytes.length;i++) s+=String.fromCharCode(bytes[i]);
+    return btoa(s);
+  }
+  var toastTimer=null;
+  function toast(msg){ var t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(function(){ t.classList.remove("show"); },2000); }
+  function copyText(text){
+    function fallback(){
+      var ta=document.createElement("textarea"); ta.value=text; ta.style.position="fixed"; ta.style.opacity="0";
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand("copy"); toast("登録コードをコピーしました"); }catch(e){ toast("コピーできませんでした。長押しでコピーしてください"); }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(function(){ toast("登録コードをコピーしました"); }, fallback); }
+    else fallback();
   }
 
-  /* Clock + hero */
-  function tick(){
-    var now = new Date();
-    document.getElementById("clockTime").textContent = pad(now.getHours())+":"+pad(now.getMinutes());
-    document.getElementById("clockSec").textContent = ":"+pad(now.getSeconds());
-    document.getElementById("heroDate").textContent = fmtDateJP(now).toUpperCase();
-    var h = now.getHours();
-    var greet = h < 5 ? "おつかれさまです" : h < 11 ? "おはようございます" : h < 17 ? "こんにちは" : h < 22 ? "おつかれさまです" : "今日も一日おつかれさまでした";
-    var name = state.greetName ? "、"+state.greetName+"さん" : "";
-    document.getElementById("heroGreet").textContent = greet + name + "。今日の予定と締切を、下でまとめて確認できます。";
-    renderDeadlines();
+  /* ---------- Device key ---------- */
+  function loadKeyRecord(){ try{ var r=localStorage.getItem(KEY_STORE); return r?JSON.parse(r):null; }catch(e){ return null; } }
+  function saveKeyRecord(rec){ try{ localStorage.setItem(KEY_STORE, JSON.stringify(rec)); }catch(e){} }
+  function generateDeviceKey(){
+    return crypto.subtle.generateKey({name:"ECDH", namedCurve:"P-256"}, true, ["deriveBits"]).then(function(pair){
+      return Promise.all([
+        crypto.subtle.exportKey("jwk", pair.privateKey),
+        crypto.subtle.exportKey("raw", pair.publicKey)
+      ]).then(function(res){
+        var rec={ privJwk: res[0], pubB64: bytesToB64(res[1]), createdAt: new Date().toISOString() };
+        saveKeyRecord(rec);
+        return rec;
+      });
+    });
+  }
+  function importPrivateKey(jwk){
+    return crypto.subtle.importKey("jwk", jwk, {name:"ECDH", namedCurve:"P-256"}, false, ["deriveBits"]);
+  }
+
+  /* ---------- Decrypt data.enc.json ---------- */
+  function decryptMirror(rec, enc){
+    if (!enc || enc.v!==1 || !enc.epk || !enc.salt || !enc.iv || !enc.ct) return Promise.reject(new Error("bad format"));
+    return importPrivateKey(rec.privJwk).then(function(priv){
+      return crypto.subtle.importKey("raw", b64ToBytes(enc.epk), {name:"ECDH", namedCurve:"P-256"}, false, []);
+    }).then(function(epkKey){
+      /* need priv again inside closure-safe way */
+      return importPrivateKey(rec.privJwk).then(function(priv2){
+        return crypto.subtle.deriveBits({name:"ECDH", public: epkKey}, priv2, 256);
+      });
+    }).then(function(shared){
+      return crypto.subtle.importKey("raw", shared, "HKDF", false, ["deriveKey"]);
+    }).then(function(hkdfKey){
+      return crypto.subtle.deriveKey(
+        {name:"HKDF", hash:"SHA-256", salt: b64ToBytes(enc.salt), info: new TextEncoder().encode(HKDF_INFO)},
+        hkdfKey, {name:"AES-GCM", length:256}, false, ["decrypt"]
+      );
+    }).then(function(aesKey){
+      return crypto.subtle.decrypt({name:"AES-GCM", iv: b64ToBytes(enc.iv)}, aesKey, b64ToBytes(enc.ct));
+    }).then(function(plain){
+      return JSON.parse(new TextDecoder().decode(plain));
+    });
+  }
+
+  /* ---------- State ---------- */
+  var data = null; /* decrypted mirror JSON or null */
+  var syncState = "checking"; /* checking | unregistered | unsynced | synced | decrypt-failed */
+  var keyRecord = loadKeyRecord();
+  var taskOverrides = {};
+  try{ var to=localStorage.getItem(TASK_OVERRIDES); if(to) taskOverrides=JSON.parse(to)||{}; }catch(e){}
+  function saveOverrides(){ try{ localStorage.setItem(TASK_OVERRIDES, JSON.stringify(taskOverrides)); }catch(e){} }
+  function taskDone(idx, task){
+    var k = idx+":"+(task.title||"");
+    if (Object.prototype.hasOwnProperty.call(taskOverrides, k)) return !!taskOverrides[k];
+    return !!task.done;
   }
 
   function remainInfo(dt){
     var diff = dt.getTime() - Date.now();
-    if (diff < 0) return { label: "期限切れ", cls: "remain-red" };
-    var mins = Math.floor(diff/60000);
-    if (mins < 60) return { label: "あと"+mins+"分", cls: "remain-red" };
-    var hrs = Math.floor(mins/60);
-    if (hrs < 24) return { label: "あと"+hrs+"時間", cls: "remain-red" };
-    var days = Math.floor(hrs/24);
-    if (days < 3) return { label: "あと"+days+"日", cls: "remain-amber" };
-    if (days < 7) return { label: "あと"+days+"日", cls: "remain-teal" };
-    return { label: "あと"+days+"日", cls: "remain-slate" };
+    if (isNaN(diff)) return {label:"", cls:"remain-slate"};
+    if (diff < 0) return {label:"期限切れ", cls:"remain-red"};
+    var mins=Math.floor(diff/60000);
+    if (mins<60) return {label:"あと"+mins+"分", cls:"remain-red"};
+    var hrs=Math.floor(mins/60);
+    if (hrs<24) return {label:"あと"+hrs+"時間", cls:"remain-red"};
+    var days=Math.floor(hrs/24);
+    if (days<3) return {label:"あと"+days+"日", cls:"remain-amber"};
+    if (days<7) return {label:"あと"+days+"日", cls:"remain-teal"};
+    return {label:"あと"+days+"日", cls:"remain-slate"};
   }
-
-  function emptyHTML(title, text){
-    return '<div class="empty"><div class="empty-title">'+esc(title)+'</div><div class="empty-text">'+esc(text)+'</div></div>';
+  function parseDue(due){
+    if(!due) return null;
+    var s=String(due);
+    var d = /T/.test(s) ? new Date(s) : new Date(s.slice(0,10)+"T23:59:00");
+    return isNaN(d.getTime()) ? null : d;
   }
-
-  function renderSchedules(){
-    var today = todayStr(new Date());
-    var list = state.schedules.filter(function(s){ return s.date === today; }).sort(function(a,b){ return (a.time||"").localeCompare(b.time||""); });
-    var box = document.getElementById("scheduleList");
-    if (!list.length) { box.innerHTML = emptyHTML("今日の予定はまだありません", "下の ＋ から予定を追加できます。"); }
-    else {
-      box.innerHTML = list.map(function(s){
-        return '<div class="row-item"><div class="time-chip">'+esc(s.time||"--:--")+'</div><div class="row-main"><div class="row-title">'+esc(s.title)+'</div>'+(s.place?'<div class="row-meta">'+esc(s.place)+'</div>':'')+'</div><button class="del-btn" data-del-schedule="'+s.id+'" aria-label="削除">×</button></div>';
-      }).join("");
-    }
-    document.getElementById("statSchedule").textContent = list.length;
+  function fmtDue(due){
+    if(!due) return "";
+    var s=String(due);
+    if(/T/.test(s)){ var d=new Date(s); if(!isNaN(d.getTime())) return d.getFullYear()+"/"+pad(d.getMonth()+1)+"/"+pad(d.getDate())+" "+pad(d.getHours())+":"+pad(d.getMinutes()); }
+    return s.slice(0,10).replace(/-/g,"/");
   }
+  function emptyHTML(t, x){ return '<div class="empty"><div class="empty-title">'+esc(t)+'</div><div class="empty-text">'+esc(x)+'</div></div>'; }
+  var UNSYNCED_EMPTY = ["データ未同期です", "登録とデータ配置が完了すると、ここに内容が表示されます。"];
 
+  /* ---------- Rendering ---------- */
+  function renderTodayEvents(){
+    var box=document.getElementById("todayEvents");
+    var all = (data && data.events) || [];
+    var list = all.filter(function(e){ return e.date===todayStr(); }).slice().sort(function(a,b){ return String(a.time||"").localeCompare(String(b.time||"")); });
+    if(!data){ box.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); }
+    else if(!list.length){ box.innerHTML=emptyHTML("今日の予定はありません", "今日に該当する予定は書き出されていません。"); }
+    else box.innerHTML=list.map(function(e){
+      return '<div class="row-item"><div class="time-chip">'+esc(e.time||"--:--")+'</div><div class="row-main"><div class="row-title">'+esc(e.title||"")+'</div>'+(e.company?'<div class="row-meta">'+esc(e.company)+(e.type?" ・ "+esc(e.type):"")+'</div>':"")+(e.note?'<div class="row-meta">'+esc(e.note)+'</div>':"")+'</div></div>';
+    }).join("");
+    document.getElementById("statSchedule").textContent=list.length;
+  }
+  function deadlineRow(d){
+    var dt=parseDue(d.due); var r=dt?remainInfo(dt):{label:"",cls:"remain-slate"};
+    return '<div class="row-item"><div class="row-main"><div class="row-title">'+esc(d.title||"")+'</div><div class="row-meta">'+(d.company?esc(d.company)+" ・ ":"")+'締切：'+esc(fmtDue(d.due))+'</div>'+(d.note?'<div class="row-meta">'+esc(d.note)+'</div>':"")+'</div>'+(r.label?'<span class="remain '+r.cls+'">'+esc(r.label)+'</span>':"")+'</div>';
+  }
   function renderDeadlines(){
-    var box = document.getElementById("deadlineList");
-    var list = state.deadlines.slice().sort(function(a,b){ return (a.date+"T"+(a.time||"23:59")).localeCompare(b.date+"T"+(b.time||"23:59")); });
-    if (!list.length) { box.innerHTML = emptyHTML("締切はまだ登録されていません", "ESや応募の締切を追加すると、残り時間が色分けで表示されます。"); }
-    else {
-      box.innerHTML = list.map(function(d){
-        var dt = new Date(d.date+"T"+(d.time||"23:59")+":00");
-        var r = remainInfo(dt);
-        var dstr = d.date.replace(/-/g,"/") + (d.time ? " "+d.time : "");
-        return '<div class="row-item"><div class="row-main"><div class="row-title">'+esc(d.title)+'</div><div class="row-meta">締切：'+esc(dstr)+'</div></div><span class="remain '+r.cls+'">'+esc(r.label)+'</span><button class="del-btn" data-del-deadline="'+d.id+'" aria-label="削除">×</button></div>';
-      }).join("");
+    var all=((data && data.deadlines)||[]).slice().sort(function(a,b){ return String(a.due||"").localeCompare(String(b.due||"")); });
+    var home=document.getElementById("homeDeadlines");
+    var full=document.getElementById("allDeadlines");
+    if(!data){ var h=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); home.innerHTML=h; full.innerHTML=h; }
+    else if(!all.length){ var h2=emptyHTML("締切はありません", "締切は書き出されていません。"); home.innerHTML=h2; full.innerHTML=h2; }
+    else { var html=all.map(deadlineRow).join(""); home.innerHTML=html; full.innerHTML=html; }
+    var soon=0;
+    all.forEach(function(d){ var dt=parseDue(d.due); if(!dt) return; var diff=dt-Date.now(); if(diff<0 || diff<=48*3600*1000) soon++; });
+    document.getElementById("statDeadline").textContent = data ? soon : 0;
+  }
+  function renderTasks(){
+    var box=document.getElementById("homeTasks");
+    var tasks=(data && data.tasks)||[];
+    if(!data){ box.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); }
+    else if(!tasks.length){ box.innerHTML=emptyHTML("Todoはありません", "Todoは書き出されていません。"); }
+    else box.innerHTML=tasks.map(function(t,i){
+      var done=taskDone(i,t);
+      return '<div class="todo-item"><button class="todo-check'+(done?" done":"")+'" data-task-idx="'+i+'" aria-label="完了切替"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button><div class="todo-text'+(done?" done":"")+'">'+esc(t.title||"")+'</div></div>';
+    }).join("");
+    var doneCount=tasks.filter(function(t,i){ return taskDone(i,t); }).length;
+    document.getElementById("statTodo").textContent = data ? (tasks.length-doneCount) : 0;
+    document.getElementById("todoCountLabel").textContent = (data && tasks.length) ? doneCount+" / "+tasks.length+" 完了" : "";
+  }
+  function renderAllEvents(){
+    var box=document.getElementById("allEvents");
+    var all=((data && data.events)||[]).slice().sort(function(a,b){ return (String(a.date||"")+String(a.time||"")).localeCompare(String(b.date||"")+String(b.time||"")); });
+    if(!data){ box.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); return; }
+    if(!all.length){ box.innerHTML=emptyHTML("予定はありません", "予定は書き出されていません。"); return; }
+    box.innerHTML=all.map(function(e){
+      var dstr=e.date?e.date.slice(5).replace("-","/"):"--/--";
+      return '<div class="row-item"><div class="date-chip">'+esc(dstr)+'<br>'+esc(e.time||"")+'</div><div class="row-main"><div class="row-title">'+esc(e.title||"")+'</div>'+(e.company?'<div class="row-meta">'+esc(e.company)+(e.type?" ・ "+esc(e.type):"")+'</div>':"")+(e.note?'<div class="row-meta">'+esc(e.note)+'</div>':"")+'</div>'+(e.type?'<span class="type-chip">'+esc(e.type)+'</span>':"")+'</div>';
+    }).join("");
+  }
+  function renderCompanies(){
+    var box=document.getElementById("companyList");
+    var list=(data && data.companies)||[];
+    if(!data){ box.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); return; }
+    if(!list.length){ box.innerHTML=emptyHTML("企業はまだありません", "企業は書き出されていません。"); return; }
+    box.innerHTML=list.map(function(c,i){
+      return '<button class="company-item" data-company="'+i+'"><span class="company-avatar">'+esc((c.name||"?").slice(0,1))+'</span><span class="row-main"><span class="row-title" style="display:block">'+esc(c.name||"")+'</span>'+(c.industry?'<span class="row-meta" style="display:block">'+esc(c.industry)+'</span>':"")+'</span>'+(c.status?'<span class="status-chip">'+esc(c.status)+'</span>':"")+'</button>';
+    }).join("");
+  }
+  function openCompany(idx){
+    var list=(data && data.companies)||[];
+    var c=list[idx]; if(!c) return;
+    var r=c.research||{};
+    var chapters=r.chapters||[];
+    var html='';
+    html+='<div style="padding-top:6px"><h1 style="font-size:26px;font-weight:800;line-height:1.3">'+esc(c.name||"")+'</h1>';
+    html+='<p style="font-size:12.5px;color:#8b98a5;margin-top:6px">'+(c.industry?esc(c.industry):"")+(c.status?' ・ <span style="color:#5eead4;font-weight:700">'+esc(c.status)+'</span>':"")+'</p></div>';
+    if(r.summary){ html+='<section class="section"><div class="section-head"><h2 class="section-title"><span class="dot dot-teal"></span>要約</h2></div><div class="report-summary">'+esc(r.summary)+'</div></section>'; }
+    if(chapters.length){
+      html+='<section class="section"><div class="section-head"><h2 class="section-title"><span class="dot dot-slate"></span>目次</h2></div><div class="card"><div class="toc">'+chapters.map(function(ch,i){ return '<a href="#chapter-'+i+'"><span class="toc-num">'+(i+1)+'.</span><span>'+esc(ch.title||"")+'</span></a>'; }).join("")+'</div></div></section>';
+      html+='<section class="section"><div class="card">'+chapters.map(function(ch,i){ return '<div class="chapter" id="chapter-'+i+'"><h3>'+(i+1)+'. '+esc(ch.title||"")+'</h3><div class="chapter-body">'+esc(ch.body||"")+'</div></div>'; }).join("")+'</div></section>';
+    } else if(!r.summary) {
+      html+='<section class="section"><div class="card">'+emptyHTML("企業研究はまだありません", "この企業の研究レポートは書き出されていません。")+'</div></section>';
     }
-    var soon = state.deadlines.filter(function(d){ var dt = new Date(d.date+"T"+(d.time||"23:59")+":00"); var diff = dt - Date.now(); return diff >= 0 && diff <= 48*3600*1000; }).length;
-    var overdue = state.deadlines.filter(function(d){ return new Date(d.date+"T"+(d.time||"23:59")+":00") < new Date(); }).length;
-    document.getElementById("statDeadline").textContent = soon + overdue;
-    var badge = document.getElementById("bellBadge");
-    badge.textContent = soon + overdue;
-    badge.classList.toggle("show", (soon+overdue) > 0);
+    document.getElementById("companyDetail").innerHTML=html;
+    showView("company");
   }
-
-  function renderTodos(){
-    var box = document.getElementById("todoList");
-    if (!state.todos.length) { box.innerHTML = emptyHTML("Todoはまだありません", "下の入力欄から、今日やることを1つ足してみてください。"); }
-    else {
-      box.innerHTML = state.todos.map(function(t){
-        return '<div class="todo-item"><button class="todo-check'+(t.done?" done":"")+'" data-toggle-todo="'+t.id+'" aria-label="完了切替"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button><div class="todo-text'+(t.done?" done":"")+'">'+esc(t.text)+'</div><button class="del-btn" data-del-todo="'+t.id+'" aria-label="削除">×</button></div>';
-      }).join("");
-    }
-    var done = state.todos.filter(function(t){ return t.done; }).length;
-    var total = state.todos.length;
-    document.getElementById("statTodo").textContent = total - done;
-    document.getElementById("todoCountLabel").textContent = total ? done+" / "+total+" 完了" : "";
-    var pct = total ? Math.round(done/total*100) : 0;
-    document.getElementById("todoProgress").style.width = pct + "%";
-    document.getElementById("todoProgressNote").textContent = total ? ("今日のTodoは "+pct+"% 完了です") : "Todoの進み具合がここに出ます";
+  function notifKind(cat){
+    var s=String(cat||"").toLowerCase();
+    if(s==="blue"||s.indexOf("mail")>=0||s.indexOf("メール")>=0||s.indexOf("就活")>=0) return "mail";
+    if(s==="green"||s.indexOf("schedule")>=0||s.indexOf("スケジュール")>=0||s.indexOf("リマインド")>=0||s.indexOf("予定")>=0) return "schedule";
+    if(s==="purple"||s.indexOf("update")>=0||s.indexOf("改善")>=0||s.indexOf("更新")>=0) return "update";
+    if(s==="red"||s.indexOf("urgent")>=0||s.indexOf("重要")>=0||s.indexOf("締切")>=0||s.indexOf("緊急")>=0) return "urgent";
+    return "other";
   }
-
-  function renderAll(){
-    document.getElementById("brandName").textContent = state.displayName || "Career OS 28";
-    document.title = state.displayName || "Career OS 28";
-    renderSchedules(); renderDeadlines(); renderTodos();
-    var memo = document.getElementById("memoArea");
-    if (document.activeElement !== memo) memo.value = state.memo || "";
+  var KIND_STYLE={mail:{bar:"nb-blue",cls:"nc-blue",label:"就活メール"},schedule:{bar:"nb-green",cls:"nc-green",label:"スケジュール"},update:{bar:"nb-purple",cls:"nc-purple",label:"改善・更新"},urgent:{bar:"nb-red",cls:"nc-red",label:"重要・締切"},other:{bar:"nb-slate",cls:"nc-slate",label:"通知"}};
+  var notifFilter="all";
+  function renderNotifications(){
+    var box=document.getElementById("notifList");
+    var all=(data && data.notifications)||[];
+    var badge=document.getElementById("bellBadge");
+    var navBadge=document.getElementById("navNotifBadge");
+    badge.textContent=all.length; badge.classList.toggle("show", !!data && all.length>0);
+    navBadge.textContent=all.length; navBadge.classList.toggle("show", !!data && all.length>0);
+    if(!data){ box.innerHTML=emptyHTML(UNSYNCED_EMPTY[0], UNSYNCED_EMPTY[1]); return; }
+    var list=all.filter(function(n){ return notifFilter==="all" || notifKind(n.category)===notifFilter; });
+    if(!list.length){ box.innerHTML=emptyHTML("通知はありません", "この分類の通知は書き出されていません。"); return; }
+    box.innerHTML=list.map(function(n){
+      var st=KIND_STYLE[notifKind(n.category)];
+      return '<div class="notif-item"><span class="notif-bar '+st.bar+'"></span><div class="row-main"><div class="notif-cat '+st.cls+'">'+esc(st.label)+(n.date?' ・ '+esc(String(n.date).slice(0,10).replace(/-/g,"/")):"")+'</div><div class="row-title" style="margin-top:3px">'+esc(n.title||"")+'</div>'+(n.body?'<div class="row-meta">'+esc(n.body)+'</div>':"")+'</div></div>';
+    }).join("");
   }
-
-  /* Events: deletes & toggles (delegation) */
-  document.addEventListener("click", function(e){
-    var t = e.target;
-    function find(attr){ var el = t.closest ? t.closest("["+attr+"]") : null; return el ? el.getAttribute(attr) : null; }
-    var ds = find("data-del-schedule"); if (ds) { state.schedules = state.schedules.filter(function(x){ return x.id !== ds; }); save(); renderAll(); toast("予定を削除しました"); return; }
-    var dd = find("data-del-deadline"); if (dd) { state.deadlines = state.deadlines.filter(function(x){ return x.id !== dd; }); save(); renderAll(); toast("締切を削除しました"); return; }
-    var dt2 = find("data-del-todo"); if (dt2) { state.todos = state.todos.filter(function(x){ return x.id !== dt2; }); save(); renderAll(); toast("Todoを削除しました"); return; }
-    var tg = find("data-toggle-todo"); if (tg) { state.todos.forEach(function(x){ if (x.id === tg) x.done = !x.done; }); save(); renderAll(); return; }
-    var ad = find("data-add"); if (ad) { openAdd(ad); return; }
-  });
-
-  /* Todo quick form */
-  document.getElementById("todoForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    var v = document.getElementById("todoInput").value.trim();
-    if (!v) return;
-    state.todos.unshift({ id: uid(), text: v, done: false });
-    document.getElementById("todoInput").value = "";
-    save(); renderAll(); toast("Todoを追加しました");
-  });
-
-  /* Memo autosave */
-  var memoTimer = null;
-  document.getElementById("memoArea").addEventListener("input", function(e){
-    state.memo = e.target.value;
-    clearTimeout(memoTimer);
-    memoTimer = setTimeout(function(){ save(); var s = document.getElementById("memoSaved"); s.textContent = "保存しました"; setTimeout(function(){ s.textContent=""; }, 1600); }, 450);
-  });
-
-  /* Add sheet */
-  var currentType = "schedule";
-  var addOverlay = document.getElementById("addOverlay");
-  function setType(type){
-    currentType = type;
-    var btns = document.querySelectorAll("#typeSeg button");
-    for (var i=0;i<btns.length;i++) btns[i].classList.toggle("sel", btns[i].getAttribute("data-type") === type);
-    document.getElementById("rowWhen").style.display = type === "todo" ? "none" : "grid";
-    document.getElementById("fieldPlace").style.display = type === "schedule" ? "block" : "none";
-    document.getElementById("fDate").required = type !== "todo";
-    document.getElementById("sheetTitle").textContent = type === "schedule" ? "予定を追加" : type === "deadline" ? "締切を追加" : "Todoを追加";
-  }
-  function openAdd(type){
-    setType(type || "schedule");
-    document.getElementById("fDate").value = todayStr(new Date());
-    addOverlay.classList.add("open");
-    setTimeout(function(){ document.getElementById("fTitle").focus(); }, 60);
-  }
-  function closeAdd(){ addOverlay.classList.remove("open"); document.getElementById("addForm").reset(); }
-  document.querySelectorAll("#typeSeg button").forEach(function(b){ b.addEventListener("click", function(){ setType(b.getAttribute("data-type")); }); });
-  document.getElementById("fabAdd").addEventListener("click", function(){ openAdd("schedule"); });
-  document.getElementById("addCancel").addEventListener("click", closeAdd);
-  addOverlay.addEventListener("click", function(e){ if (e.target === addOverlay) closeAdd(); });
-  document.getElementById("addForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    var title = document.getElementById("fTitle").value.trim();
-    if (!title) return;
-    var date = document.getElementById("fDate").value || todayStr(new Date());
-    var time = document.getElementById("fTime").value || "12:00";
-    var place = document.getElementById("fPlace").value.trim();
-    if (currentType === "schedule") state.schedules.push({ id: uid(), title: title, date: date, time: time, place: place });
-    else if (currentType === "deadline") state.deadlines.push({ id: uid(), title: title, date: date, time: time });
-    else state.todos.unshift({ id: uid(), text: title, done: false });
-    save(); renderAll(); closeAdd(); toast("保存しました");
-    document.getElementById(currentType === "deadline" ? "secDeadline" : "secSchedule").scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-
-  /* Settings */
-  var settingsOverlay = document.getElementById("settingsOverlay");
-  function openSettings(){
-    document.getElementById("sName").value = state.displayName || "Career OS 28";
-    document.getElementById("sGreetName").value = state.greetName || "";
-    settingsOverlay.classList.add("open");
-  }
-  function closeSettings(){ settingsOverlay.classList.remove("open"); }
-  document.getElementById("navSettings").addEventListener("click", openSettings);
-  document.getElementById("settingsCancel").addEventListener("click", closeSettings);
-  settingsOverlay.addEventListener("click", function(e){ if (e.target === settingsOverlay) closeSettings(); });
-  document.getElementById("settingsForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    state.displayName = document.getElementById("sName").value.trim() || "Career OS 28";
-    state.greetName = document.getElementById("sGreetName").value.trim();
-    save(); renderAll(); tick(); closeSettings(); toast("設定を保存しました");
-  });
-  document.getElementById("resetBtn").addEventListener("click", function(){
-    if (this.getAttribute("data-confirm") === "1") {
-      state = { schedules: [], deadlines: [], todos: [], memo: "", displayName: "Career OS 28", greetName: "" };
-      try { localStorage.removeItem(window.__careerLock.lockKey); } catch(e){}
-      save(); renderAll(); tick(); closeSettings(); toast("データをすべて消しました");
-      this.textContent = "この端末のデータをすべて消す"; this.removeAttribute("data-confirm");
+  function renderSyncUI(){
+    keyRecord=loadKeyRecord();
+    var regCard=document.getElementById("regCard");
+    var unsync=document.getElementById("unsyncCard");
+    var syncLine=document.getElementById("syncLine");
+    var status=document.getElementById("settingsStatus");
+    var sync=document.getElementById("settingsSync");
+    var codeBlock=document.getElementById("settingsCodeBlock");
+    var regBlock=document.getElementById("settingsRegisterBlock");
+    regCard.style.display="none"; unsync.style.display="none";
+    if(!keyRecord){
+      syncState = syncState==="checking" ? "checking" : "unregistered";
+      regCard.style.display="block";
+      syncLine.textContent="この端末は未登録です。下のボタンから登録してください。";
+      status.innerHTML='<span class="status-pill status-wait">未登録</span>';
+      sync.textContent="端末キーがまだ作られていません。";
+      codeBlock.style.display="none"; regBlock.style.display="block";
     } else {
-      this.setAttribute("data-confirm", "1"); this.textContent = "本当に消しますか？ もう一度タップで実行";
-      var b = this; setTimeout(function(){ b.textContent = "この端末のデータをすべて消す"; b.removeAttribute("data-confirm"); }, 3500);
+      codeBlock.style.display="block"; regBlock.style.display="none";
+      document.getElementById("settingsCodeText").textContent=keyRecord.pubB64||"";
+      if(syncState==="synced" && data){
+        syncLine.textContent="同期済み"+(data.exportedAt?" ・ 書き出し日時："+String(data.exportedAt).replace("T"," ").slice(0,16):"");
+        status.innerHTML='<span class="status-pill status-ok">登録済み ・ データ復号済み</span>';
+        sync.textContent="この端末の鍵でデータを開けています。"+(data.exportedAt?"書き出し日時："+String(data.exportedAt):"");
+      } else if(syncState==="checking"){
+        syncLine.textContent="暗号化データを確認しています…";
+        status.innerHTML='<span class="status-pill status-wait">登録済み ・ 確認中</span>';
+        sync.textContent="";
+      } else {
+        unsync.style.display="block";
+        if(syncState==="decrypt-failed"){
+          document.getElementById("unsyncText").textContent="暗号化データは見つかりましたが、この端末の鍵では開けませんでした。登録コードが Muse に渡したものと一致しているか、設定画面で確認してください。一致しない場合は、現在の登録コードを送り直してデータの再発行を受けてください。";
+        } else {
+          document.getElementById("unsyncText").textContent="暗号化データがまだ配置されていません。登録コードを Muse に送ると、あなたのデータがこの端末向けに暗号化されて配置されます。すでに送った場合は、配置が完了するまで少し待ってから開き直してください。";
+        }
+        syncLine.textContent="データ未同期です。登録コードを Muse に送ってください。";
+        status.innerHTML='<span class="status-pill status-wait">登録済み ・ データ未同期</span>';
+        sync.textContent="暗号化データが未配置か、この端末の鍵では開けませんでした。";
+      }
+    }
+  }
+  function renderAll(){ renderSyncUI(); renderTodayEvents(); renderDeadlines(); renderTasks(); renderAllEvents(); renderCompanies(); renderNotifications(); }
+
+  /* ---------- Load & decrypt ---------- */
+  function loadMirror(){
+    keyRecord=loadKeyRecord();
+    if(!keyRecord){ data=null; syncState="unregistered"; renderAll(); return; }
+    syncState="checking"; renderAll();
+    fetch("data.enc.json", {cache:"no-store"}).then(function(res){
+      if(!res.ok) throw new Error("not found");
+      return res.json();
+    }).then(function(enc){
+      return decryptMirror(keyRecord, enc);
+    }).then(function(plain){
+      data=plain||{}; syncState="synced"; renderAll();
+    }).catch(function(err){
+      data=null;
+      /* fetch failure (no file) vs decrypt failure are both shown as unsynced; decrypt errors keep a distinct message */
+      syncState = (err && err.message==="not found") ? "unsynced" : "decrypt-failed";
+      renderAll();
+    });
+  }
+
+  /* ---------- Navigation ---------- */
+  function showView(name){
+    var views=document.querySelectorAll(".view");
+    for(var i=0;i<views.length;i++) views[i].classList.toggle("active", views[i].id==="view-"+name);
+    var navs=document.querySelectorAll("[data-nav]");
+    for(var j=0;j<navs.length;j++) navs[j].classList.toggle("active", navs[j].getAttribute("data-nav")===name || (name==="company" && navs[j].getAttribute("data-nav")==="companies"));
+    window.scrollTo({top:0});
+  }
+  document.querySelectorAll("[data-nav]").forEach(function(b){ b.addEventListener("click", function(){ showView(b.getAttribute("data-nav")); }); });
+  document.getElementById("bellBtn").addEventListener("click", function(){ showView("notifications"); });
+  document.getElementById("companyBack").addEventListener("click", function(){ showView("companies"); });
+  document.addEventListener("click", function(e){
+    var el=e.target.closest ? e.target.closest("[data-company]") : null;
+    if(el){ openCompany(parseInt(el.getAttribute("data-company"),10)); return; }
+    var tk=e.target.closest ? e.target.closest("[data-task-idx]") : null;
+    if(tk && data && data.tasks){
+      var idx=parseInt(tk.getAttribute("data-task-idx"),10);
+      var task=data.tasks[idx]; if(!task) return;
+      var k=idx+":"+(task.title||"");
+      taskOverrides[k]=!taskDone(idx, task);
+      saveOverrides(); renderTasks();
+    }
+  });
+  document.getElementById("notifFilters").addEventListener("click", function(e){
+    var b=e.target.closest ? e.target.closest("[data-filter]") : null; if(!b) return;
+    notifFilter=b.getAttribute("data-filter");
+    var btns=document.querySelectorAll("#notifFilters .filter-btn");
+    for(var i=0;i<btns.length;i++) btns[i].classList.toggle("sel", btns[i]===b);
+    renderNotifications();
+  });
+
+  /* ---------- Registration actions ---------- */
+  function doRegister(){
+    if(!(window.crypto && crypto.subtle)){ toast("このブラウザでは暗号化が使えません。Safariで開いてください"); return; }
+    generateDeviceKey().then(function(rec){
+      keyRecord=rec;
+      var area=document.getElementById("regCodeArea");
+      document.getElementById("regCodeText").textContent=rec.pubB64;
+      area.style.display="block";
+      document.getElementById("registerBtn").textContent="登録済み（コードが表示されています）";
+      renderSyncUI();
+      loadMirror();
+      toast("端末を登録しました");
+    }).catch(function(){ toast("鍵の生成に失敗しました。もう一度お試しください"); });
+  }
+  document.getElementById("registerBtn").addEventListener("click", doRegister);
+  document.getElementById("registerBtn2").addEventListener("click", doRegister);
+  document.getElementById("copyCodeBtn").addEventListener("click", function(){ if(keyRecord) copyText(keyRecord.pubB64); });
+  document.getElementById("copyCodeBtn2").addEventListener("click", function(){ if(keyRecord) copyText(keyRecord.pubB64); });
+  document.getElementById("retryBtn").addEventListener("click", loadMirror);
+  document.getElementById("reloadBtn").addEventListener("click", function(){ loadMirror(); toast("再読み込みしました"); });
+  document.getElementById("resetKeyBtn").addEventListener("click", function(){
+    if(this.getAttribute("data-confirm")==="1"){
+      try{ localStorage.removeItem(KEY_STORE); }catch(e){}
+      keyRecord=null; data=null; syncState="unregistered";
+      document.getElementById("regCodeArea").style.display="none";
+      document.getElementById("registerBtn").textContent="端末を登録する";
+      renderAll(); showView("home");
+      this.textContent="端末キーをリセットする"; this.removeAttribute("data-confirm");
+      toast("端末キーをリセットしました");
+    } else {
+      this.setAttribute("data-confirm","1"); this.textContent="本当にリセットしますか？ もう一度タップで実行（データの再発行が必要になります）";
+      var b=this; setTimeout(function(){ b.textContent="端末キーをリセットする"; b.removeAttribute("data-confirm"); },4000);
     }
   });
 
-  /* Password change (settings) */
-  document.getElementById("pwChangeBtn").addEventListener("click", function(){
-    var cur = document.getElementById("pwCurrent").value || "";
-    var nw = document.getElementById("pwNew").value || "";
-    var L = window.__careerLock; var rec = L.getLock();
-    if (!rec) { toast("まずロック画面でパスワードを設定してください"); return; }
-    if (nw.length < 4) { toast("新しいパスワードは4文字以上にしてください"); return; }
-    L.hashPw(cur, rec.salt).then(function(h){
-      if (h !== rec.hash) { toast("現在のパスワードが違います"); return; }
-      var salt = L.makeSalt();
-      L.hashPw(nw, salt).then(function(nh){
-        L.setLock({ salt: salt, hash: nh });
-        document.getElementById("pwCurrent").value = ""; document.getElementById("pwNew").value = "";
-        toast("パスワードを変更しました");
-      });
-    });
-  });
+  /* ---------- Clock ---------- */
+  function tick(){
+    var now=new Date();
+    document.getElementById("clockTime").textContent=pad(now.getHours())+":"+pad(now.getMinutes());
+    document.getElementById("clockSec").textContent=":"+pad(now.getSeconds());
+    document.getElementById("heroDate").textContent=fmtDateJP(now);
+    document.getElementById("heroDay").textContent=(now.getMonth()+1)+"月"+now.getDate()+"日";
+    var h=now.getHours();
+    var greet=h<5?"おつかれさまです":h<11?"おはようございます":h<17?"こんにちは":h<22?"おつかれさまです":"今日も一日おつかれさまでした";
+    document.getElementById("heroGreet").textContent=greet+"。今日の予定と締切を、下でまとめて確認できます。";
+  }
 
-  /* Bell + nav */
-  document.getElementById("bellBtn").addEventListener("click", function(){
-    var el = document.getElementById("secDeadline");
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-    toast("締切が近いものは赤・黄のバッジで表示されます");
-  });
-  document.getElementById("navToday").addEventListener("click", function(){ window.scrollTo({ top: 0, behavior: "smooth" }); });
+  /* Dynamic manifest (Add to Home Screen) */
+  try{
+    var iconSvg="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180"><rect width="180" height="180" rx="40" fill="#0b0f14"/><text x="90" y="118" font-size="76" font-family="sans-serif" font-weight="700" fill="#5eead4" text-anchor="middle">28</text></svg>');
+    var manifest={name:"Career OS 28",short_name:"Career OS 28",display:"standalone",start_url:".",scope:".",background_color:"#0b0f14",theme_color:"#0b0f14",lang:"ja",icons:[{src:iconSvg,sizes:"180x180",type:"image/svg+xml",purpose:"any"}]};
+    document.getElementById("manifestLink").setAttribute("href", URL.createObjectURL(new Blob([JSON.stringify(manifest)],{type:"application/manifest+json"})));
+  }catch(e){}
 
-  /* Dynamic manifest with icon (enhances Add to Home Screen where supported) */
-  try {
-    var iconSvg = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180"><rect width="180" height="180" rx="40" fill="#0b0f14"/><text x="90" y="118" font-size="76" font-family="sans-serif" font-weight="700" fill="#5eead4" text-anchor="middle">28</text></svg>');
-    var manifest = { name: "Career OS 28", short_name: "Career OS 28", display: "standalone", start_url: ".", scope: ".", background_color: "#0b0f14", theme_color: "#0b0f14", lang: "ja", icons: [ { src: iconSvg, sizes: "180x180", type: "image/svg+xml", purpose: "any" } ] };
-    var url = URL.createObjectURL(new Blob([JSON.stringify(manifest)], { type: "application/manifest+json" }));
-    document.getElementById("manifestLink").setAttribute("href", url);
-  } catch(e) {}
-
+  /* If a key already exists, show its code in the home registration card area is unnecessary;
+     the settings screen carries it. Existing key + data => straight to content, no login. */
+  if(keyRecord){
+    var area=document.getElementById("regCodeArea");
+    /* keep home clean: code lives in settings */
+    area.style.display="none";
+  }
+  tick(); setInterval(tick, 1000);
   renderAll();
-  tick();
-  setInterval(tick, 1000);
+  loadMirror();
 })();
 </script>
 </body>
